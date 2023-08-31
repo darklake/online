@@ -89,6 +89,14 @@ L.control = function (options) {
 	return new L.Control(options);
 };
 
+L.useHelp = function () {
+	return false;
+};
+
+L.useRename = function () {
+	return false;
+};
+
 
 // adds control-related methods to L.Map
 

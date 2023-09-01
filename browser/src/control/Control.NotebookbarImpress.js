@@ -126,12 +126,12 @@ L.Control.NotebookbarImpress = L.Control.NotebookbarWriter.extend({
 				'name': 'View',
 				'accessibility': { focusBack: false, combination: 'W', de: null }
 			},
-			{
+			...(L.useHelp() ? {
 				'id': 'Help-tab-label',
 				'text': _('Help'),
 				'name': 'Help',
 				'accessibility': { focusBack: false, combination: 'Y', de: null }
-			}
+			} : [])
 		];
 	},
 
@@ -148,7 +148,7 @@ L.Control.NotebookbarImpress = L.Control.NotebookbarWriter.extend({
 				this.getDrawTab(),
 				this.getMasterTab(),
 				this.getViewTab(),
-				this.getHelpTab()
+				...(L.useHelp() ? this.getHelpTab() : [])
 			], selectedId);
 	},
 
@@ -384,7 +384,7 @@ L.Control.NotebookbarImpress = L.Control.NotebookbarWriter.extend({
 					}
 				]
 			},
-			{
+			...(L.useRename() ? {
 				'type': 'container',
 				'children': [
 					{
@@ -394,7 +394,7 @@ L.Control.NotebookbarImpress = L.Control.NotebookbarWriter.extend({
 						'text': _('Rename'),
 					}
 				]
-			}
+			} : [])
 		);
 
 		return this.getTabPage('File', content);

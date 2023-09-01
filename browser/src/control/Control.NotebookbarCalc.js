@@ -64,12 +64,12 @@ L.Control.NotebookbarCalc = L.Control.NotebookbarWriter.extend({
 				'name': 'View',
 				'accessibility': { focusBack: true,	combination: 'W', de: null }
 			},
-			{
+			...(L.useHelp() ? {
 				'id': 'Help-tab-label',
 				'text': _('Help'),
 				'name': 'Help',
 				'accessibility': { focusBack: true,	combination: 'Y1', de: null }
-			}
+			} : [])
 		];
 	},
 
@@ -85,7 +85,7 @@ L.Control.NotebookbarCalc = L.Control.NotebookbarWriter.extend({
 				this.getFormatTab(),
 				this.getDrawTab(),
 				this.getViewTab(),
-				this.getHelpTab()
+				...(L.useHelp() ? this.getHelpTab() : [])
 			], selectedId);
 	},
 
@@ -272,7 +272,7 @@ L.Control.NotebookbarCalc = L.Control.NotebookbarWriter.extend({
 					}
 				]
 			},
-			{
+			...(L.useRename() ? {
 				'type': 'container',
 				'children': [
 					{
@@ -282,7 +282,7 @@ L.Control.NotebookbarCalc = L.Control.NotebookbarWriter.extend({
 						'text': _('Rename'),
 					}
 				]
-			}
+			} : [])
 		];
 
 		return this.getTabPage('File', content);

@@ -91,12 +91,12 @@ L.Control.NotebookbarWriter = L.Control.Notebookbar.extend({
 				'name': viewTabName,
 				'accessibility': { focusBack: true, combination: 'W', de: 'F' }
 			},
-			{
+			...(L.useHelp() ? {
 				'text': _('Help'),
 				'id': helpTabName + '-tab-label',
 				'name': helpTabName,
 				'accessibility': { focusBack: true, combination: 'Y', de: 'E' }
-			}
+			} : [])
 		];
 	},
 
@@ -114,7 +114,7 @@ L.Control.NotebookbarWriter = L.Control.Notebookbar.extend({
 				this.getTableTab(),
 				this.getDrawTab(),
 				this.getViewTab(),
-				this.getHelpTab()
+				...(L.useHelp() ? this.getHelpTab() : [])
 			 ], selectedId);
 
 		return t;
@@ -319,21 +319,20 @@ L.Control.NotebookbarWriter = L.Control.Notebookbar.extend({
 						'accessibility': { focusBack: true,	combination: 'I', de: 'I' }
 					}
 				]
-			}
+			},
+			...(L.useRename() ? {
+				'type': 'container',
+				'children': [
+					{
+						'id': 'renamedocument',
+						'class': 'unoRenameDocument',
+						'type': 'bigcustomtoolitem',
+						'text': _('Rename'),
+					}
+				]
+			} : [])
 		];
-
-		content.push({
-			'type': 'container',
-			'children': [
-				{
-					'id': 'renamedocument',
-					'class': 'unoRenameDocument',
-					'type': 'bigcustomtoolitem',
-					'text': _('Rename'),
-				}
-			]
-		});
-
+		
 		return this.getTabPage(fileTabName, content);
 	},
 

@@ -64,7 +64,7 @@ L.Control.NotebookbarCalc = L.Control.NotebookbarWriter.extend({
 				'name': 'View',
 				'accessibility': { focusBack: true,	combination: 'W', de: null }
 			},
-			...(L.useHelp() ? {
+			(L.useHelp() ? {
 				'id': 'Help-tab-label',
 				'text': _('Help'),
 				'name': 'Help',
@@ -85,7 +85,7 @@ L.Control.NotebookbarCalc = L.Control.NotebookbarWriter.extend({
 				this.getFormatTab(),
 				this.getDrawTab(),
 				this.getViewTab(),
-				...(L.useHelp() ? this.getHelpTab() : [])
+				(L.useHelp() ? this.getHelpTab() : [])
 			], selectedId);
 	},
 
@@ -272,7 +272,7 @@ L.Control.NotebookbarCalc = L.Control.NotebookbarWriter.extend({
 					}
 				]
 			},
-			...(L.useRename() ? {
+			(L.useRename() ? {
 				'type': 'container',
 				'children': [
 					{

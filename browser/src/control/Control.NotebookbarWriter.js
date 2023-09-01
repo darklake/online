@@ -91,7 +91,7 @@ L.Control.NotebookbarWriter = L.Control.Notebookbar.extend({
 				'name': viewTabName,
 				'accessibility': { focusBack: true, combination: 'W', de: 'F' }
 			},
-			...(L.useHelp() ? {
+			(L.useHelp() ? {
 				'text': _('Help'),
 				'id': helpTabName + '-tab-label',
 				'name': helpTabName,
@@ -114,7 +114,7 @@ L.Control.NotebookbarWriter = L.Control.Notebookbar.extend({
 				this.getTableTab(),
 				this.getDrawTab(),
 				this.getViewTab(),
-				...(L.useHelp() ? this.getHelpTab() : [])
+				(L.useHelp() ? this.getHelpTab() : [])
 			 ], selectedId);
 
 		return t;
@@ -320,7 +320,7 @@ L.Control.NotebookbarWriter = L.Control.Notebookbar.extend({
 					}
 				]
 			},
-			...(L.useRename() ? {
+			(L.useRename() ? {
 				'type': 'container',
 				'children': [
 					{

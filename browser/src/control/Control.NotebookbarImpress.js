@@ -126,7 +126,7 @@ L.Control.NotebookbarImpress = L.Control.NotebookbarWriter.extend({
 				'name': 'View',
 				'accessibility': { focusBack: false, combination: 'W', de: null }
 			},
-			...(L.useHelp() ? {
+			(L.useHelp() ? {
 				'id': 'Help-tab-label',
 				'text': _('Help'),
 				'name': 'Help',
@@ -148,7 +148,7 @@ L.Control.NotebookbarImpress = L.Control.NotebookbarWriter.extend({
 				this.getDrawTab(),
 				this.getMasterTab(),
 				this.getViewTab(),
-				...(L.useHelp() ? this.getHelpTab() : [])
+				(L.useHelp() ? this.getHelpTab() : [])
 			], selectedId);
 	},
 
@@ -384,7 +384,7 @@ L.Control.NotebookbarImpress = L.Control.NotebookbarWriter.extend({
 					}
 				]
 			},
-			...(L.useRename() ? {
+			(L.useRename() ? {
 				'type': 'container',
 				'children': [
 					{

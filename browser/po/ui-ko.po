@@ -206,7 +206,6 @@ msgid "Server uptime"
 msgstr "서버 가동 시간"
 
 #: admin/admin.strings.js:50
-#, fuzzy
 msgid "Refresh Log"
 msgstr "새로 고침"
 
@@ -568,7 +567,6 @@ msgid "Insert Comment"
 msgstr "메모삽입"
 
 #: src/control/Control.JSDialogBuilder.js:3011
-#, fuzzy
 msgid "Cell borders"
 msgstr "테두리"
 
@@ -587,7 +585,6 @@ msgid "Columns"
 msgstr "행"
 
 #: src/control/Control.JSDialogBuilder.js:3292
-#, fuzzy
 msgid "Insert Table"
 msgstr "표 삽입"
 
@@ -678,7 +675,6 @@ msgid "EPUB (.epub)"
 msgstr "EPUB (.epub)"
 
 #: src/control/Control.Menubar.js:76
-#, fuzzy
 msgid "Rename Document"
 msgstr "문서 복구"
 
@@ -710,7 +706,6 @@ msgstr "다음 형식으로 내려 받기"
 #: src/control/Control.NotebookbarBuilder.js:590
 #: src/control/Control.NotebookbarBuilder.js:619
 #: src/control/Control.NotebookbarBuilder.js:648
-#, fuzzy
 msgid "PDF Document (.pdf) as..."
 msgstr "PDF 문서 (.pdf)"
 
@@ -827,7 +822,7 @@ msgstr "텍스트 방향"
 #: src/control/Control.Menubar.js:276
 #: src/control/Control.NotebookbarWriter.js:51
 msgid "References"
-msgstr "참조1"
+msgstr "참조"
 
 #: src/control/Control.Menubar.js:279
 #: src/control/Control.NotebookbarWriter.js:1772
@@ -882,7 +877,6 @@ msgid "Insert Picture"
 msgstr "그림 삽입"
 
 #: src/control/Control.Menubar.js:326 src/control/Control.Menubar.js:1197
-#, fuzzy
 msgid "Insert Date"
 msgstr "날짜 삽입"
 
@@ -976,7 +970,6 @@ msgid "PowerPoint Presentation (.pptx)"
 msgstr "PowerPoint 프레젠테이션 (.pptx)"
 
 #: src/control/Control.Menubar.js:382 src/control/Control.Menubar.js:530
-#, fuzzy
 msgid "Save Comments"
 msgstr "추가 설명"
 
@@ -999,7 +992,6 @@ msgstr "현재 슬라이드 표시"
 #: src/control/Control.NotebookbarBuilder.js:631
 #: src/control/Control.NotebookbarDraw.js:206
 #: src/control/Control.NotebookbarImpress.js:272
-#, fuzzy
 msgid "ODF Drawing (.odg)"
 msgstr "ODF 프레젠테이션 (.odp)"
 
@@ -1075,7 +1067,6 @@ msgid "Read-only mode"
 msgstr "읽기 전용 모드"
 
 #: src/control/Control.Menubar.js:1793
-#, fuzzy
 msgid "Insert Shape"
 msgstr "도형 삽입"
 
@@ -1095,7 +1086,6 @@ msgid "Borders"
 msgstr "테두리"
 
 #: src/control/Control.MobileTopBar.js:31 src/control/Control.StatusBar.js:469
-#, fuzzy
 msgid "Read-only"
 msgstr "읽기 전용"
 
@@ -1169,7 +1159,6 @@ msgstr "홈"
 #: src/control/Control.NotebookbarDraw.js:65
 #: src/control/Control.NotebookbarImpress.js:72
 #: src/control/Control.NotebookbarWriter.js:39
-#, fuzzy
 msgid "Insert"
 msgstr "표 삽입"
 
@@ -1188,7 +1177,6 @@ msgstr "데이터"
 #: src/control/Control.NotebookbarDraw.js:77
 #: src/control/Control.NotebookbarImpress.js:82
 #: src/control/Control.NotebookbarWriter.js:57
-#, fuzzy
 msgid "Review"
 msgstr "개요"
 
@@ -1209,7 +1197,6 @@ msgstr "그리기"
 #: src/control/Control.NotebookbarDraw.js:103
 #: src/control/Control.NotebookbarImpress.js:110
 #: src/control/Control.NotebookbarWriter.js:89
-#, fuzzy
 msgid "View"
 msgstr "보기"
 
@@ -1230,7 +1217,6 @@ msgstr "다른 이름으로 저장"
 #: src/control/Control.NotebookbarDraw.js:160
 #: src/control/Control.NotebookbarImpress.js:187
 #: src/control/Control.NotebookbarWriter.js:169
-#, fuzzy
 msgid "Export As"
 msgstr "내보내기"
 
@@ -1255,7 +1241,6 @@ msgid "Download"
 msgstr "다운로드"
 
 #: src/control/Control.NotebookbarCalc.js:190
-#, fuzzy
 msgid "ODF Spreadsheet (.ods)"
 msgstr "ODF 스프레드시트 (.ods)"
 
@@ -1286,7 +1271,6 @@ msgid "Percent"
 msgstr "퍼센트"
 
 #: src/control/Control.NotebookbarCalc.js:621
-#, fuzzy
 msgid "Currency"
 msgstr "현재"
 
@@ -1349,32 +1333,26 @@ msgid "Column Width"
 msgstr "열 너비"
 
 #: src/control/Control.NotebookbarCalc.js:957
-#, fuzzy
 msgid "Insert Rows Above"
 msgstr "표 삽입"
 
 #: src/control/Control.NotebookbarCalc.js:964
-#, fuzzy
 msgid "Insert Columns Before"
 msgstr "현재 시트 앞에 시트 삽입"
 
 #: src/control/Control.NotebookbarCalc.js:971
-#, fuzzy
 msgid "Delete Rows"
 msgstr "삭제"
 
 #: src/control/Control.NotebookbarCalc.js:983
-#, fuzzy
 msgid "Insert Rows Below"
 msgstr "시트 삽입"
 
 #: src/control/Control.NotebookbarCalc.js:990
-#, fuzzy
 msgid "Insert Columns After"
 msgstr "현재 시트 뒤에 시트 삽입"
 
 #: src/control/Control.NotebookbarCalc.js:997
-#, fuzzy
 msgid "Delete Columns"
 msgstr "행"
 
@@ -1444,7 +1422,6 @@ msgid "Master"
 msgstr "마스터"
 
 #: src/control/Control.NotebookbarImpress.js:266
-#, fuzzy
 msgid "ODF Presentation (.odp)"
 msgstr "ODF 프레젠테이션 (.odp)"
 
@@ -1458,7 +1435,6 @@ msgid "Form"
 msgstr "폼"
 
 #: src/control/Control.NotebookbarWriter.js:227
-#, fuzzy
 msgid "ODF Text Document (.odt)"
 msgstr "ODF 텍스트 문서 (.odt)"
 
@@ -1643,7 +1619,6 @@ msgid "Copy Sheet..."
 msgstr "시트 복사..."
 
 #: src/control/Control.Tabs.js:301
-#, fuzzy
 msgid "Are you sure you want to delete sheet, %sheet%?"
 msgstr "%sheet% 시트를 정말 삭제하겠습니까?"
 
@@ -1798,7 +1773,6 @@ msgid "Citation Style"
 msgstr "인용 스타일"
 
 #: src/control/Control.Zotero.js:746
-#, fuzzy
 msgid "Styles"
 msgstr "스타일"
 
@@ -1886,7 +1860,6 @@ msgid "Server returned this reason:"
 msgstr "서버에서 반환된 이유:"
 
 #: src/control/Permission.js:86
-#, fuzzy
 msgid "The document could not be locked."
 msgstr "문서를 저장할 수 없습니다."
 
@@ -1922,12 +1895,10 @@ msgid "Right Margin"
 msgstr "오른쪽 여백"
 
 #: src/control/Ruler.js:626
-#, fuzzy
 msgid "Insert tabstop"
 msgstr "표 삽입"
 
 #: src/control/Ruler.js:633
-#, fuzzy
 msgid "Delete tabstop"
 msgstr "표 삭제"
 
@@ -1940,7 +1911,6 @@ msgid "This document has an invalid signature."
 msgstr "이 문서에는 유효하지 않은 서명이 포함되어 있습니다."
 
 #: src/control/Signing.js:26
-#, fuzzy
 msgid "The signature was valid, but the document has been modified."
 msgstr "서명은 유효하지만, 문서가 수정되었습니다."
 
@@ -1949,7 +1919,6 @@ msgid "The signature is OK, but the certificate could not be validated."
 msgstr "서명은 문제 없으나, 인증서를 검증할 수 없습니다."
 
 #: src/control/Signing.js:34
-#, fuzzy
 msgid "The signature is OK, but the document is only partially signed."
 msgstr "서명은 문제 없지만, 문서는 일부만 서명되었습니다"
 
@@ -2009,7 +1978,6 @@ msgid "Headings and objects that you add to the document will appear here"
 msgstr "문서에 추가하는 제목과 객체는 여기에 표시됩니다."
 
 #: src/core/Socket.js:55
-#, fuzzy
 msgid "Oops, there is a problem connecting to %productName: "
 msgstr "문서를 여는데 문제가 발생했습니다."
 
@@ -2054,7 +2022,6 @@ msgid "Idle document - please click to reload and resume editing"
 msgstr "대기중인 문서 - 편집을 계속하려면 클릭하십시오.(새로 고침됨)"
 
 #: src/core/Socket.js:747
-#, fuzzy
 msgid "Idle document - please tap to reload and resume editing"
 msgstr "대기중인 문서 - 편집을 계속하려면 클릭하십시오.(새로 고침됨)"
 
@@ -2163,7 +2130,6 @@ msgid ""
 msgstr "문서에 연결할 수 없습니다. 다시 시도하십시오."
 
 #: src/core/Socket.js:1576
-#, fuzzy
 msgid "Reconnecting..."
 msgstr "연결하는 중.."
 
@@ -2182,7 +2148,6 @@ msgid ""
 msgstr "호스트 URL이 비어 있습니다. coolwsd 서버가 잘못 구성된 것일 수 있습니다. 관리자에게 문의하십시오."
 
 #: src/errormessages.js:15
-#, fuzzy
 msgid ""
 "This is an unsupported version of {productname}. To avoid the impression "
 "that it is suitable for deployment in enterprises, this message appears "
@@ -2221,14 +2186,12 @@ msgid "Wrong or missing WOPISrc parameter, please contact support."
 msgstr "WOPISrc 매개 변수가 잘못되었거나 누락되었습니다. 지원팀에 문의하십시오."
 
 #: src/errormessages.js:21
-#, fuzzy
 msgid ""
 "Your session will expire in %time. Please save your work and refresh the "
 "session (or webpage) to continue. You might need to login again."
 msgstr "세션이 %time 내에 만료됩니다. 계속하려면 작업을 저장하고 세션(또는 웹페이지)를 새로 고침하십시오."
 
 #: src/errormessages.js:22
-#, fuzzy
 msgid ""
 "Your session has expired. Further changes to the document might not be "
 "saved. Please refresh the session (or webpage) to continue. You might need "
@@ -2341,7 +2304,6 @@ msgid "Uploading file to server failed, the file is too large."
 msgstr "서버로 파일 업로드가 실패하였습니다. 파일이 너무 큽니다."
 
 #: src/layer/tile/CanvasTileLayer.js:1986
-#, fuzzy
 msgid "Functions"
 msgstr "함수 마법사"
 
@@ -2407,7 +2369,6 @@ msgid "Reject change"
 msgstr "변경 사항 거부"
 
 #: src/layer/tile/CommentSection.ts:294
-#, fuzzy
 msgid "Resolved"
 msgstr "해결"
 
@@ -2698,7 +2659,6 @@ msgstr ""
 #~ msgid "Signed but not all files are signed"
 #~ msgstr "서명되었으나, 모든 파일이 서명되지 않았습니다"
 
-#, fuzzy
 #~ msgid ""
 #~ "You are leaving the editor, are you sure you want to visit the following "
 #~ "URL?"
@@ -2716,15 +2676,12 @@ msgstr ""
 #~ msgid "Jump to state"
 #~ msgstr "상태로 이동"
 
-#, fuzzy
 #~ msgid "Next"
 #~ msgstr "문자"
 
-#, fuzzy
 #~ msgid "Start Presentation"
 #~ msgstr "텍스트 방향"
 
-#, fuzzy
 #~ msgid "Reset Zoom"
 #~ msgstr "배율 초기화"
 
@@ -2790,7 +2747,6 @@ msgstr ""
 #~ msgid "Last sheet"
 #~ msgstr "마지막 시트"
 
-#, fuzzy
 #~ msgid "Hatching"
 #~ msgstr "음영선"
 
@@ -2803,7 +2759,6 @@ msgstr ""
 #~ msgid "Landscape"
 #~ msgstr "가로방향"
 
-#, fuzzy
 #~| msgid "Text orientation"
 #~ msgid "Toggle Page Orientation"
 #~ msgstr "텍스트 방향"

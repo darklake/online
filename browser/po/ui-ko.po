@@ -1160,7 +1160,7 @@ msgstr "홈"
 #: src/control/Control.NotebookbarImpress.js:72
 #: src/control/Control.NotebookbarWriter.js:39
 msgid "Insert"
-msgstr "표 삽입"
+msgstr "삽입"
 
 #: src/control/Control.NotebookbarCalc.js:32
 #: src/control/Control.NotebookbarDraw.js:71

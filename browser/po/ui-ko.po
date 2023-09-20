@@ -589,7 +589,7 @@ msgstr "행"
 #: src/control/Control.JSDialogBuilder.js:3292
 #, fuzzy
 msgid "Insert Table"
-msgstr "표 삽입1"
+msgstr "표 삽입"
 
 #: src/control/Control.LanguageDialog.js:54 src/control/Control.Menubar.js:339
 #: src/control/Control.Menubar.js:341 src/control/Control.Menubar.js:343
@@ -1171,7 +1171,7 @@ msgstr "홈"
 #: src/control/Control.NotebookbarWriter.js:39
 #, fuzzy
 msgid "Insert"
-msgstr "표 삽입2"
+msgstr "표 삽입"
 
 #: src/control/Control.NotebookbarCalc.js:32
 #: src/control/Control.NotebookbarDraw.js:71
@@ -1351,7 +1351,7 @@ msgstr "열 너비"
 #: src/control/Control.NotebookbarCalc.js:957
 #, fuzzy
 msgid "Insert Rows Above"
-msgstr "표 삽입3"
+msgstr "표 삽입"
 
 #: src/control/Control.NotebookbarCalc.js:964
 #, fuzzy
@@ -1675,7 +1675,7 @@ msgstr "기본양식"
 
 #: src/control/Control.TopToolbar.js:222
 msgid "Insert table"
-msgstr "표 삽입4"
+msgstr "표 삽입"
 
 #: src/control/Control.TopToolbar.js:230
 msgid "Insert shapes"
@@ -1924,7 +1924,7 @@ msgstr "오른쪽 여백"
 #: src/control/Ruler.js:626
 #, fuzzy
 msgid "Insert tabstop"
-msgstr "표 삽입5"
+msgstr "표 삽입"
 
 #: src/control/Ruler.js:633
 #, fuzzy

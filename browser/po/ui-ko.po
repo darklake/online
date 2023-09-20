@@ -827,7 +827,7 @@ msgstr "텍스트 방향"
 #: src/control/Control.Menubar.js:276
 #: src/control/Control.NotebookbarWriter.js:51
 msgid "References"
-msgstr "참조"
+msgstr "참조1"
 
 #: src/control/Control.Menubar.js:279
 #: src/control/Control.NotebookbarWriter.js:1772

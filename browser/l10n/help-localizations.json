@@ -1,5 +1,5 @@
 {
-    "en": false,
+    "en": "%SERVICE_ROOT%/browser/%VERSION%/l10n/help-ko.json",
     "ab": "%SERVICE_ROOT%/browser/%VERSION%/l10n/help-ab.json",
     "af": "%SERVICE_ROOT%/browser/%VERSION%/l10n/help-af.json",
     "am": "%SERVICE_ROOT%/browser/%VERSION%/l10n/help-am.json",

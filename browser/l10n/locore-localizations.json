@@ -1,5 +1,5 @@
 {
-    "en": false,
+    "en": "%SERVICE_ROOT%/browser/%VERSION%/l10n/locore/ko.json",
     "ab": "%SERVICE_ROOT%/browser/%VERSION%/l10n/locore/ab.json",
     "af": "%SERVICE_ROOT%/browser/%VERSION%/l10n/locore/af.json",
     "am": "%SERVICE_ROOT%/browser/%VERSION%/l10n/locore/am.json",

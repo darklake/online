@@ -268,7 +268,7 @@ var unoCommandsArray = {
 	'InsertObjectStarMath':{spreadsheet:{context:_('Insert Formula Object'),menu:_('~Formula Object...'),},text:{context:_('Insert Formula Object'),menu:_('~Formula Object...'),},},
 	'InsertPage':{presentation:{menu:_('New Page'),},},
 	'InsertPageCountField':{text:{menu:_('Page ~Count'),},},
-	'InsertPageField':{presentation:{menu:_('~Page Number'),},},
+	'InsertPageField':{presentation:{menu:_('~Page Number'),},text:{menu:_('~Page Number'),},},
 	'InsertPageFooter':{text:{menu:_('Foote~r'),},},
 	'InsertPageHeader':{text:{menu:_('He~ader'),},},
 	'InsertPageNumberField':{global:{menu:_('~Page Numbers...'),},text:{menu:_('~Page Number'),},},

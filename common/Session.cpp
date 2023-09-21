@@ -151,7 +151,7 @@ void Session::parseDocOptions(const StringVector& tokens, int& part, std::string
         else if (name == "lang")
         {
             if (value == "en")
-                _lang = "en-US";
+                _lang = "ko";
             else
                 _lang = value;
             ++offset;

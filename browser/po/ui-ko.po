@@ -1123,11 +1123,11 @@ msgstr "로컬 이미지 삽입"
 
 #: src/control/Control.NotebookbarBuilder.js:1023
 msgid "Very Tight"
-msgstr "아주 타이트"
+msgstr "아주 좁게"
 
 #: src/control/Control.NotebookbarBuilder.js:1024
 msgid "Tight"
-msgstr "타이트"
+msgstr "좁게"
 
 #: src/control/Control.NotebookbarBuilder.js:1025
 msgid "Normal"
@@ -1135,11 +1135,11 @@ msgstr "보통"
 
 #: src/control/Control.NotebookbarBuilder.js:1026
 msgid "Loose"
-msgstr "루스"
+msgstr "넓게"
 
 #: src/control/Control.NotebookbarBuilder.js:1027
 msgid "Very Loose"
-msgstr "아주 루스"
+msgstr "아주 넓게"
 
 #: src/control/Control.NotebookbarCalc.js:13
 #: src/control/Control.NotebookbarDraw.js:52

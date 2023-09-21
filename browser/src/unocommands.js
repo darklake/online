@@ -466,7 +466,7 @@ var unoCommandsArray = {
 	'ThemeDialog':{global:{menu:_('Theme...'),},text:{menu:_('Theme...'),},},
 	'ThesaurusDialog':{global:{menu:_('~Thesaurus...'),},text:{menu:_('~Thesaurus...'),},},
 	'TitlePageDialog':{text:{menu:_('Title Page...'),},},
-	'PageNumbreDialog':{text:{menu:_('Title Page...'),},},
+	'PageNumbreDialog':{text:{menu:_('Page Number...'),},},
 	'ToggleMergeCells':{spreadsheet:{context:_('Merge and center or unmerge cells depending on the current toggle state'),menu:_('M~erge and Center Cells'),},},
 	'ToolsMenu':{global:{menu:_('~Tools'),},},
 	'TrackChanges':{text:{context:_('Record Track Changes'),menu:_('~Record'),},},

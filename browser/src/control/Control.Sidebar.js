@@ -100,7 +100,6 @@ L.Control.Sidebar = L.Control.extend({
 	},
 
 	commandForDeck: function(deckId) {
-		console.log(`deckId : ${deckId}`)
 		if (deckId === 'PropertyDeck')
 			return '.uno:SidebarDeck.PropertyDeck';
 		else if (deckId === 'SdSlideTransitionDeck')

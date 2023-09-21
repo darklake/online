@@ -101,7 +101,7 @@ L.Styles = {
 		'outline9':'Outline 9',
 		'subtitle':'Subtitle',
 		'title':'Title',
-		'Clear formatting':'Clear formatting',
+		'Clear formatting':'Clear formatting1',
 		'Default Style':'Default Style',
 		'Bullet Symbols':'Bullets',
 		'Numbering Symbols':'Numbering Symbols',

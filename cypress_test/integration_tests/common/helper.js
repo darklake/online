@@ -60,12 +60,12 @@ function generateDocumentURI(URL, subFolder, newFileName) {
 	if (subFolder === undefined) {
 		URI = URL + '/browser/' +
 			Cypress.env('WSD_VERSION_HASH') +
-			'/debug.html?lang=en-US&file_path=' +
+			'/debug.html?lang=ko&file_path=' +
 			Cypress.env('DATA_WORKDIR') + newFileName;
 	} else {
 		URI = URL + '/browser/' +
 			Cypress.env('WSD_VERSION_HASH') +
-			'/debug.html?lang=en-US&file_path=' +
+			'/debug.html?lang=ko&file_path=' +
 			Cypress.env('DATA_WORKDIR') + subFolder + '/' + newFileName;
 	}
 	return URI;

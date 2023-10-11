@@ -923,7 +923,13 @@ L.Control.JSDialogBuilder = L.Control.extend({
 				var expander = L.DomUtil.create('div', 'ui-expander ' + builder.options.cssClass, container);
 				expander.tabIndex = '0';
 				var label = L.DomUtil.create('span', 'ui-expander-label ' + builder.options.cssClass, expander);
-				label.innerText = builder._cleanText(data.children[0].text);
+				console.log('data : ' + data);
+				console.log('data.children[0] : ' + data.children[0]);
+				console.log('data.children[0].text : ' + data.children[0].text);
+				var cleanText = builder._cleanText(data.children[0].text);
+				console.log('cleanText : ' + cleanText);
+				cleanText = 'Merong';
+				label.innerText = cleanText;
 				label.id = data.children[0].id ? data.children[0].id : data.id + '-label';
 				if (data.children[0].visible === false)
 					L.DomUtil.addClass(label, 'hidden');

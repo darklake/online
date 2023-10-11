@@ -16,6 +16,8 @@ L.Control.Sidebar = L.Control.extend({
 
 	onAdd: function (map) {
 		this.map = map;
+		
+		console.log(`map : ${map}`)
 
 		this.builder = new L.control.jsDialogBuilder({mobileWizard: this, map: map, cssClass: 'jsdialog sidebar'});
 		this.container = L.DomUtil.create('div', 'sidebar-container', $('#sidebar-panel').get(0));

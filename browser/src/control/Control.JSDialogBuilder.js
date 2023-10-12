@@ -8,7 +8,7 @@
 var translations = null;
 
 // 번역 로드
-fetch('../../l10n/ui-ko.json')
+fetch('browser/dist/l10n/ui-ko.json')
 	.then(function (response) {
 		console.log('fetch response : ' + response);
 		console.log('response.ok : ' + response.ok);
@@ -21,7 +21,6 @@ fetch('../../l10n/ui-ko.json')
 		translations = data;
 	})
 	.catch(function(error) {
-		// 여기서 오류를 확인하고 처리합니다.
 		console.error('There was a problem with the fetch operation:', error.message);
 	})
 	;

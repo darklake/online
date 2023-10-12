@@ -554,7 +554,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		if (!text)
 			return '';
 
-		text = _translate(text);
+		text = this._translate(text);
 		
 		if (text.endsWith('...'))
 			text = text.slice(0, -3);

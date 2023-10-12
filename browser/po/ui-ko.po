@@ -554,10 +554,10 @@ msgid "Paragraph"
 msgstr "단락"
 
 msgid "Spacing:"
-msgstr "간격:"
+msgstr "간격"
 
 msgid "Indent:"
-msgstr "들여쓰기:"
+msgstr "들여쓰기"
 
 #: src/control/Control.JSDialogBuilder.js:2222
 msgid "reply"

@@ -552,7 +552,8 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		var index = text.indexOf(accessKey);
 		if (index >= 0) {
 			var converted = this._translate(text);
-			if (converted.contains('accessKey')) {
+			console.log('text : ' + text + ', converted : ' + converted + ', accessKey : ' + accessKey);
+			if (converted.contains(accessKey)) {
 				var title = converted + '(' + '<u class="access-key">' + accessKey.replace('~', '') + '</u>' + ')';
 				element.innerHTML = title;
 			} else {

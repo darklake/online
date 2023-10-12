@@ -9,8 +9,10 @@ var translations = null;
 
 // 번역 로드
 fetch('/home/cool/collabora-online-temp/browser/dist/l10n/ui-ko.json')
-	.then(response => response.json())
-	.then(data => {
+	.then(function (response) {
+		return response.json();
+	})
+	.then(function (data) {
 		translations = data;
 	});
 
@@ -535,10 +537,10 @@ L.Control.JSDialogBuilder = L.Control.extend({
 	_cleanText: function (text) {
 		if (!text)
 			return '';
-		
-		text = 	this.translate(text);
+
+		text = this.translate(text);
 		console.log('text : ' + text);
-		
+
 		if (text.endsWith('...'))
 			text = text.slice(0, -3);
 		return text.replace('~', '');

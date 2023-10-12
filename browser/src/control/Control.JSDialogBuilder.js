@@ -1969,6 +1969,9 @@ L.Control.JSDialogBuilder = L.Control.extend({
 
 				var option = L.DomUtil.create('option', '', listbox);
 				option.value = index;
+				console.log('data : ', data);
+				console.log('data.entries : ', data.entries);
+				console.log('data.entries[index] : ', data.entries[index]);
 				option.innerText = data.entries[index];
 				if (isSelected) {
 					option.selected = true;

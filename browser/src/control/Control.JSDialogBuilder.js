@@ -16,8 +16,8 @@ fetch('l10n/ui-' + window.langParam + '.json')
 		return data;
 	})
 	.then(function (data) {
-		if (![window.langParam]) {
-			[window.langParam] = JSON.stringify({});
+		if (!translations[window.langParam]) {
+			translations[window.langParam] = JSON.stringify({});
 		}
 		translations[window.langParam]['ui'] = data;
 	})

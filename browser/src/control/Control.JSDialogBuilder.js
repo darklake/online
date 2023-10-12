@@ -18,7 +18,8 @@ fetch('/home/cool/collabora-online-temp/browser/dist/l10n/ui-ko.json')
 
 L.Control.JSDialogBuilder = L.Control.extend({
 
-	translate: function (key) {
+	_translate: function (key) {
+		console.log('translations : ' + translations)
 		return translations && translations[key] ? translations[key] : key;
 	},
 
@@ -538,7 +539,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		if (!text)
 			return '';
 
-		text = this.translate(text);
+		text = this._translate(text);
 		console.log('text : ' + text);
 
 		if (text.endsWith('...'))

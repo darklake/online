@@ -8,7 +8,7 @@
 var translations = null;
 
 // 번역 로드
-fetch('browser/dist/l10n/ui-ko.json')
+fetch('../l10n/ui-ko.json')
 	.then(function (response) {
 		console.log('fetch response : ' + response);
 		return response.json();
@@ -16,7 +16,12 @@ fetch('browser/dist/l10n/ui-ko.json')
 	.then(function (data) {
 		console.log('fetch data : ' + data);
 		translations = data;
-	});
+	})
+	.catch(function(error) {
+		// 여기서 오류를 확인하고 처리합니다.
+		console.error('There was a problem with the fetch operation:', error.message);
+	})
+	;
 
 L.Control.JSDialogBuilder = L.Control.extend({
 

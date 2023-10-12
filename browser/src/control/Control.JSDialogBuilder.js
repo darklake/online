@@ -27,8 +27,12 @@ fetch('l10n/ui-' + window.langParam + '.json')
 
 L.Control.JSDialogBuilder = L.Control.extend({
 	_translate: function (key) {
+		console.log('translations : ' + translations);
 		if (translations) {
+			console.log('translations[window.langParam]' + translations[window.langParam]);
+			console.log('translations[window.langParam][ui]' + translations[window.langParam]['ui']);
 			if (translations[window.langParam]['ui']) {
+				
 				return translations[window.langParam]['ui'][key] ? translations[window.langParam]['ui'][key] : key;
 			}
 		}

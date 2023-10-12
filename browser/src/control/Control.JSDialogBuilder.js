@@ -1972,7 +1972,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 				console.log('data : ', data);
 				console.log('data.entries : ', data.entries);
 				console.log('data.entries[index] : ', data.entries[index]);
-				option.innerText = builder._clearText(data.entries[index]);
+				option.innerText = builder._cleanText(data.entries[index]);
 				if (isSelected) {
 					option.selected = true;
 					hasSelectedEntry = true;

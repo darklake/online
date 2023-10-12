@@ -10,18 +10,15 @@ var translations = null;
 // 번역 로드
 fetch('/home/cool/collabora-online-temp/browser/dist/l10n/ui-ko.json')
 	.then(function (response) {
-		console.log('fetch response : ' + response);
 		return response.json();
 	})
 	.then(function (data) {
-		console.log('fetch data : ' + data);
 		translations = data;
 	});
 
 L.Control.JSDialogBuilder = L.Control.extend({
 
 	translate: function (key) {
-		console.log('translations : ' + translations + ', translations[' + key + '] : ' + translations[key]);
 		return translations && translations[key] ? translations[key] : key;
 	},
 

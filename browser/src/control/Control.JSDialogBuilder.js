@@ -10,9 +10,11 @@ var translations = null;
 // 번역 로드
 fetch('browser/dist/l10n/ui-ko.json')
 	.then(function (response) {
+		console.log('fetch response : ' + response);
 		return response.json();
 	})
 	.then(function (data) {
+		console.log('fetch data : ' + data);
 		translations = data;
 	});
 

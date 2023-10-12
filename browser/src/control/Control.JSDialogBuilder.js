@@ -10,13 +10,13 @@ var translations = JSON.stringify({});
 console.log('window.langParam : ', window.langParam);
 console.log('Window.langParam : ', Window.langParam);
 // 번역 로드
-fetch('l10n/ui-ko.json')
+fetch('l10n/ui-' + window.langParam + '.json')
 	.then(function (response) {
 		var data = response.json();
 		return data;
 	})
 	.then(function (data) {
-		translations['ui'] = data;
+		translations[window.langParam]['ui'] = data;
 	})
 	.catch(function(error) {
 		console.error('There was a problem with the fetch operation:', error.message);
@@ -25,8 +25,8 @@ fetch('l10n/ui-ko.json')
 L.Control.JSDialogBuilder = L.Control.extend({
 	_translate: function (key) {
 		if (translations) {
-			if (translations['ui']) {
-				return translations['ui'][key] ? translations['ui'][key] : key;
+			if (translations[window.langParam]['ui']) {
+				return translations[window.langParam]['ui'][key] ? translations[window.langParam]['ui'][key] : key;
 			}
 		}
 		return key;

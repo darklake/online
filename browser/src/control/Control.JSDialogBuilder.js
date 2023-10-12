@@ -13,7 +13,7 @@ var translations = {};
 //./browser/dist/l10n/uno/ko.json
 
 console.log('window.langParam : ', window.langParam);
-_fetch_json = function (fileName) {
+_fetchJson = function (fileName) {
 	fetch(fileName)
 	.then(function (response) {
 		var data = response.json();
@@ -30,20 +30,33 @@ _fetch_json = function (fileName) {
 	});
 };
 
-this._fetch_json('l10n/help-' + window.langParam + '.json', 'help');
-this._fetch_json('l10n/ui-' + window.langParam + '.json', 'ui');
-this._fetch_json('l10n/locore/' + window.langParam + '.json', 'locore');
-this._fetch_json('l10n/uno/' + window.langParam + '.json', 'uno');
+this._fetchJson('l10n/help-' + window.langParam + '.json', 'help');
+this._fetchJson('l10n/ui-' + window.langParam + '.json', 'ui');
+this._fetchJson('l10n/locore/' + window.langParam + '.json', 'locore');
+this._fetchJson('l10n/uno/' + window.langParam + '.json', 'uno');
 
 L.Control.JSDialogBuilder = L.Control.extend({
 	_translate: function (key) {
-		console.log('translations : ' + translations);
-		if (translations) {
-			console.log('translations[window.langParam]' + translations[window.langParam]);
-			console.log('translations[window.langParam][ui]' + translations[window.langParam]['ui']);
+		if (translations && translations[window.langParam]) {
 			if (translations[window.langParam]['ui']) {
-				
-				return translations[window.langParam]['ui'][key] ? translations[window.langParam]['ui'][key] : key;
+				if (translations[window.langParam]['ui'][key]) {
+					return translations[window.langParam]['ui'][key];
+				}
+			}
+			if (translations[window.langParam]['locore']) {
+				if (translations[window.langParam]['locore'][key]) {
+					return translations[window.langParam]['locore'][key];
+				}
+			}
+			if (translations[window.langParam]['uno']) {
+				if (translations[window.langParam]['uno'][key]) {
+					return translations[window.langParam]['uno'][key];
+				}
+			}
+			if (translations[window.langParam]['help']) {
+				if (translations[window.langParam]['help'][key]) {
+					return translations[window.langParam]['help'][key];
+				}
 			}
 		}
 		return key;

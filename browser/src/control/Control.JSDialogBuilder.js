@@ -5,7 +5,7 @@
  */
 
 /* global app $ w2ui _ _UNO L JSDialog */
-var translations = JSON.stringify({});
+var translations = {};
 
 console.log('window.langParam : ', window.langParam);
 console.log('Window.langParam : ', Window.langParam);
@@ -17,7 +17,7 @@ fetch('l10n/ui-' + window.langParam + '.json')
 	})
 	.then(function (data) {
 		if (!translations[window.langParam]) {
-			translations[window.langParam] = JSON.stringify({});
+			translations[window.langParam] = {};
 		}
 		translations[window.langParam]['ui'] = data;
 	})

@@ -8,7 +8,7 @@
 var translations = null;
 
 // 번역 로드
-fetch('/home/cool/collabora-online-temp/browser/dist/l10n/ui-ko.json')
+fetch('browser/dist/l10n/ui-ko.json')
 	.then(function (response) {
 		return response.json();
 	})
@@ -19,6 +19,7 @@ fetch('/home/cool/collabora-online-temp/browser/dist/l10n/ui-ko.json')
 L.Control.JSDialogBuilder = L.Control.extend({
 
 	_translate: function (key) {
+
 		console.log('translations : ' + translations);
 		return translations && translations[key] ? translations[key] : key;
 	},

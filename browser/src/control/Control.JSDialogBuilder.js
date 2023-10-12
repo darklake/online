@@ -11,6 +11,8 @@ var translations = null;
 fetch('../../l10n/ui-ko.json')
 	.then(function (response) {
 		console.log('fetch response : ' + response);
+		console.log('response.ok : ' + response.ok);
+		console.log('json : ' + response.json());
 		return response.json();
 	})
 	.then(function (data) {

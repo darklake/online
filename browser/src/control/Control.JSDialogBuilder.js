@@ -7,10 +7,14 @@
 /* global app $ w2ui _ _UNO L JSDialog */
 var translations = {};
 
+//./browser/dist/l10n/help-ko.json
+//./browser/dist/l10n/ui-ko.json
+//./browser/dist/l10n/locore/ko.json
+//./browser/dist/l10n/uno/ko.json
+
 console.log('window.langParam : ', window.langParam);
-console.log('Window.langParam : ', Window.langParam);
-// 번역 로드
-fetch('l10n/ui-' + window.langParam + '.json')
+_fetch_json = function (fileName) {
+	fetch(fileName)
 	.then(function (response) {
 		var data = response.json();
 		return data;
@@ -24,6 +28,12 @@ fetch('l10n/ui-' + window.langParam + '.json')
 	.catch(function(error) {
 		console.error('There was a problem with the fetch operation:', error.message);
 	});
+};
+
+this._fetch_json('l10n/help-' + window.langParam + '.json', 'help');
+this._fetch_json('l10n/ui-' + window.langParam + '.json', 'ui');
+this._fetch_json('l10n/locore/' + window.langParam + '.json', 'locore');
+this._fetch_json('l10n/uno/' + window.langParam + '.json', 'uno');
 
 L.Control.JSDialogBuilder = L.Control.extend({
 	_translate: function (key) {

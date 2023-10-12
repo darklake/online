@@ -547,6 +547,12 @@ msgstr "글꼴 크기"
 msgid "Style"
 msgstr "스타일"
 
+msgid "Character"
+msgstr "문자"
+
+msgid "Paragraph"
+msgstr "단락"
+
 #: src/control/Control.JSDialogBuilder.js:2222
 msgid "reply"
 msgstr "회신"

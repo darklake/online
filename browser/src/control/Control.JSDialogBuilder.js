@@ -523,6 +523,21 @@ L.Control.JSDialogBuilder = L.Control.extend({
 	_cleanText: function(text) {
 		if (!text)
 			return '';
+		
+		let translations = null;
+
+		fetch('/home/cool/collabora-online-temp/browser/dist/l10n/ui-ko.json')
+		.then(response => response.json())
+		.then(data => {
+			translations = data;
+		});
+
+		if (translations && translations[text]) {
+			text = translations[text];
+		}
+
+		console.log('text : ' + text);
+
 		if (text.endsWith('...'))
 			text = text.slice(0, -3);
 		return text.replace('~', '');
@@ -928,7 +943,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 				console.log('data.children[0].text : ' + data.children[0].text);
 				var cleanText = builder._cleanText(data.children[0].text);
 				console.log('cleanText : ' + cleanText);
-				cleanText = 'Merong';
+				//cleanText = 'Merong';
 				label.innerText = cleanText;
 				label.id = data.children[0].id ? data.children[0].id : data.id + '-label';
 				if (data.children[0].visible === false)

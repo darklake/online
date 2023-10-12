@@ -1800,7 +1800,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 			image = L.DomUtil.create('img', '', pushbutton);
 			image.src = data.image;
 			var text = L.DomUtil.create('span', '', pushbutton);
-			text.innerText = pushbuttonText;
+			text.innerText = builder._cleanText(pushbuttonText);
 			builder._stressAccessKey(text, pushbutton.accessKey);
 		} else if (data.image) {
 			L.DomUtil.addClass(pushbutton, 'has-img d-flex align-content-center justify-content-center align-items-center');
@@ -1811,7 +1811,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 			image = L.DomUtil.create('img', '', pushbutton);
 			L.LOUtil.setImage(image, 'symbol_' + data.symbol + '.svg', builder.map.getDocType());
 		} else {
-			pushbutton.innerText = pushbuttonText;
+			pushbutton.innerText = builder._cleanText(pushbuttonText);
 			builder._stressAccessKey(pushbutton, pushbutton.accessKey);
 		}
 		if (data.enabled === 'false' || data.enabled === false)
@@ -1984,7 +1984,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 			if (title) {
 				var newOption = L.DomUtil.create('option', '', listbox);
 				newOption.value = ++index;
-				newOption.innerText = title;
+				newOption.innerText = builder._cleanText(title);
 				newOption.selected = true;
 			} else
 				$(listbox).val('');
@@ -2281,11 +2281,11 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		imgNode.alt = data.text;
 
 		var textNode = L.DomUtil.create('figcaption', 'empty-comment-wizard', emptyCommentWizard);
-		textNode.innerText = data.text;
+		textNode.innerText = builder._cleanText(data.text);
 		L.DomUtil.create('br', 'empty-comment-wizard', textNode);
 		if (this.map.isPermissionEditForComments()) {
 			var linkNode = L.DomUtil.create('div', 'empty-comment-wizard-link', textNode);
-			linkNode.innerText = _('Insert Comment');
+			linkNode.innerText = builder._cleanText(_('Insert Comment'));
 			linkNode.onclick = builder.map.insertComment.bind(builder.map);
 		}
 	},

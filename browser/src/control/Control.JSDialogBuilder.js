@@ -29,10 +29,10 @@ _fetchJson = function (fileName, modeName) {
 	});
 };
 
-this._fetchJson('l10n/help-' + window.langParam + '.json', 'help');
-this._fetchJson('l10n/ui-' + window.langParam + '.json', 'ui');
-this._fetchJson('l10n/locore/' + window.langParam + '.json', 'locore');
-this._fetchJson('l10n/uno/' + window.langParam + '.json', 'uno');
+_fetchJson('l10n/help-' + window.langParam + '.json', 'help');
+_fetchJson('l10n/ui-' + window.langParam + '.json', 'ui');
+_fetchJson('l10n/locore/' + window.langParam + '.json', 'locore');
+_fetchJson('l10n/uno/' + window.langParam + '.json', 'uno');
 
 L.Control.JSDialogBuilder = L.Control.extend({
 	_translate: function (key) {

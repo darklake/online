@@ -524,13 +524,15 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		if (!text)
 			return '';
 		
-		let translations = null;
+		var translations;
 
 		fetch('/home/cool/collabora-online-temp/browser/dist/l10n/ui-ko.json')
 		.then(response => response.json())
 		.then(data => {
 			translations = data;
 		});
+
+		console.log('translations : ' + translations + ', translations[text] : ' + translations[text]);
 
 		if (translations && translations[text]) {
 			text = translations[text];

@@ -5,8 +5,10 @@
  */
 
 /* global app $ w2ui _ _UNO L JSDialog */
-var translations = null;
+var translations = JSON.stringify({});
 
+console.log('window.langParam : ', window.langParam)
+console.log('Window.langParam : ', Window.langParam)
 // 번역 로드
 fetch('l10n/ui-ko.json')
 	.then(function (response) {
@@ -14,7 +16,8 @@ fetch('l10n/ui-ko.json')
 		return data;
 	})
 	.then(function (data) {
-		translations = data;
+
+		translations['ui'] = data;
 	})
 	.catch(function(error) {
 		console.error('There was a problem with the fetch operation:', error.message);
@@ -22,8 +25,12 @@ fetch('l10n/ui-ko.json')
 
 L.Control.JSDialogBuilder = L.Control.extend({
 	_translate: function (key) {
-		console.log('translations : ' + translations);
-		return translations && translations[key] ? translations[key] : key;
+		if (translations) {
+			if (translations[ui]) {
+				return translations[ui][key] ? translations[ui][key] : key;
+			}
+		}
+		return key;
 	},
 	options: {
 		// window id
@@ -540,9 +547,6 @@ L.Control.JSDialogBuilder = L.Control.extend({
 	_cleanText: function (text) {
 		if (!text)
 			return '';
-
-		text = this._translate(text);
-		console.log('text : ' + text);
 
 		if (text.endsWith('...'))
 			text = text.slice(0, -3);

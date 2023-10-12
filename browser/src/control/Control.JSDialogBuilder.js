@@ -552,13 +552,16 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		var index = text.indexOf(accessKey);
 		if (index >= 0) {
 			var title = text.replace(accessKey, '<u class="access-key">' + accessKey.replace('~', '') + '</u>');
+			console.log('title : ' + title);
 			element.innerHTML = title;
 		}
 	},
 
 	_setAccessKey: function (element, key) {
-		if (key)
+		if (key) {
+			console.log('accessKey, key : ' + key);
 			element.accessKey = key;
+		}
 	},
 
 	_getAccessKeyFromText: function (text) {
@@ -569,6 +572,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 				nextChar = text.charAt(index + 1);
 			}
 		}
+		console.log('nextChar : ' + nextChar);
 		return nextChar;
 	},
 

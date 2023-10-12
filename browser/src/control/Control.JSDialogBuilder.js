@@ -12,7 +12,7 @@ var translations = {};
 //./browser/dist/l10n/locore/ko.json
 //./browser/dist/l10n/uno/ko.json
 
-_fetchJson = function (fileName, modeName) {
+var _fetchJson = function (fileName, modeName) {
 	fetch(fileName)
 	.then(function (response) {
 		var data = response.json();

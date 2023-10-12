@@ -8,7 +8,7 @@
 var translations = null;
 
 // 번역 로드
-fetch('browser/dist/l10n/ui-ko.json')
+fetch('l10n/ui-ko.json')
 	.then(function (response) {
 		console.log('fetch response : ' + response);
 		console.log('response.ok : ' + response.ok);

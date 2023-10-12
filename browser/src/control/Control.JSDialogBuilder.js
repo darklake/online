@@ -26,8 +26,8 @@ fetch('l10n/ui-ko.json')
 L.Control.JSDialogBuilder = L.Control.extend({
 	_translate: function (key) {
 		if (translations) {
-			if (translations[ui]) {
-				return translations[ui][key] ? translations[ui][key] : key;
+			if (translations['ui']) {
+				return translations['ui'][key] ? translations['ui'][key] : key;
 			}
 		}
 		return key;

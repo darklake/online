@@ -12,7 +12,7 @@ var translations = {};
 //./browser/dist/l10n/locore/ko.json
 //./browser/dist/l10n/uno/ko.json
 
-_fetchJson = function (fileName) {
+_fetchJson = function (fileName, modeName) {
 	fetch(fileName)
 	.then(function (response) {
 		var data = response.json();
@@ -22,7 +22,7 @@ _fetchJson = function (fileName) {
 		if (!translations[window.langParam]) {
 			translations[window.langParam] = {};
 		}
-		translations[window.langParam]['ui'] = data;
+		translations[window.langParam][modeName] = data;
 	})
 	.catch(function(error) {
 		console.error('There was a problem with the fetch operation:', error.message);

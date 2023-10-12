@@ -10,29 +10,21 @@ var translations = null;
 // 번역 로드
 fetch('l10n/ui-ko.json')
 	.then(function (response) {
-		console.log('fetch response : ' + response);
-		console.log('response.ok : ' + response.ok);
 		var data = response.json();
-		console.log('json : ' + data);
 		return data;
 	})
 	.then(function (data) {
-		console.log('fetch data : ' + data);
 		translations = data;
 	})
 	.catch(function(error) {
 		console.error('There was a problem with the fetch operation:', error.message);
-	})
-	;
+	});
 
 L.Control.JSDialogBuilder = L.Control.extend({
-
 	_translate: function (key) {
-
 		console.log('translations : ' + translations);
 		return translations && translations[key] ? translations[key] : key;
 	},
-
 	options: {
 		// window id
 		windowId: null,
@@ -950,9 +942,9 @@ L.Control.JSDialogBuilder = L.Control.extend({
 				var expander = L.DomUtil.create('div', 'ui-expander ' + builder.options.cssClass, container);
 				expander.tabIndex = '0';
 				var label = L.DomUtil.create('span', 'ui-expander-label ' + builder.options.cssClass, expander);
-				console.log('data : ' + data);
-				console.log('data.children[0] : ' + data.children[0]);
-				console.log('data.children[0].text : ' + data.children[0].text);
+				console.log('data : ' + JSON.stringify(data, null, 2));
+				console.log('data.children[0] : ' + JSON.stringify(data.children[0], null, 2));
+				console.log('data.children[0].text : ' + JSON.stringify(data.children[0].text, null, 2));
 				var cleanText = builder._cleanText(data.children[0].text);
 				console.log('cleanText : ' + cleanText);
 				//cleanText = 'Merong';

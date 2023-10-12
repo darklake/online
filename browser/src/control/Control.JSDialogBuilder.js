@@ -552,7 +552,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		var index = text.indexOf(accessKey);
 		if (index >= 0) {
 			var title = text.replace(accessKey, '<u class="access-key">' + accessKey.replace('~', '') + '</u>');
-			console.log('title : ' + title);
+			console.log('text : ' + text + ', title : ' + title);
 			element.innerHTML = title;
 		}
 	},
@@ -937,7 +937,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		var leftDiv = L.DomUtil.create('div', 'ui-header-left', sectionTitle);
 		var titleClass = 'func-name';
 		var titleSpan = L.DomUtil.create('span', titleClass, leftDiv);
-		titleSpan.textContent = data.text;
+		titleSpan.textContent = builder._cleanText(data.text);
 
 		var rightDiv = L.DomUtil.create('div', 'ui-header-right', sectionTitle);
 		var arrowSpan = L.DomUtil.create('div', 'func-info-icon', rightDiv);
@@ -3000,7 +3000,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 
 	_borderControl: function (parentContainer, data, builder) {
 		var bordercontrollabel = L.DomUtil.create('label', builder.options.cssClass + ' ui-text', parentContainer);
-		bordercontrollabel.textContent = _('Cell borders');
+		bordercontrollabel.textContent = builder._cleanText(_('Cell borders'));
 		bordercontrollabel.id = data.id + 'label';
 		var current = builder._getCurrentBorderNumber(builder);
 		for (var i = 1; i < 13; ++i)
@@ -3121,7 +3121,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 
 					if (data.command === '.uno:FontColor' || data.command === '.uno:Color') {
 						var autoColorButton = document.createElement('button');
-						autoColorButton.textContent = _('Automatic');
+						autoColorButton.textContent = builder._cleanText(_('Automatic'));
 						autoColorButton.classList.add('auto-color-button');
 
 						autoColorButton.onclick = function () {

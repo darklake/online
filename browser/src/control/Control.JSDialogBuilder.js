@@ -7,8 +7,8 @@
 /* global app $ w2ui _ _UNO L JSDialog */
 var translations = JSON.stringify({});
 
-console.log('window.langParam : ', window.langParam)
-console.log('Window.langParam : ', Window.langParam)
+console.log('window.langParam : ', window.langParam);
+console.log('Window.langParam : ', Window.langParam);
 // 번역 로드
 fetch('l10n/ui-ko.json')
 	.then(function (response) {
@@ -16,7 +16,6 @@ fetch('l10n/ui-ko.json')
 		return data;
 	})
 	.then(function (data) {
-
 		translations['ui'] = data;
 	})
 	.catch(function(error) {

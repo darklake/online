@@ -12,8 +12,9 @@ fetch('../../l10n/ui-ko.json')
 	.then(function (response) {
 		console.log('fetch response : ' + response);
 		console.log('response.ok : ' + response.ok);
-		console.log('json : ' + response.json());
-		return response.json();
+		var data = response.json();
+		console.log('json : ' + data);
+		return data;
 	})
 	.then(function (data) {
 		console.log('fetch data : ' + data);

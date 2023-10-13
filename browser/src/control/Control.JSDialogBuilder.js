@@ -68,9 +68,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		}
 		return value;
 	},
-	translate: function (key, removeTag) {
-		return this._translate(key, removeTag);
-	},
+	
 	options: {
 		// window id
 		windowId: null,
@@ -3502,7 +3500,9 @@ L.Control.JSDialogBuilder = L.Control.extend({
 			&& data.type !== 'treelistbox')
 			control.setAttribute('tabIndex', '0');
 	},
-
+	translate: function (key, removeTag) {
+		return this._translate(key, removeTag);
+	},
 	build: function (parent, data, hasVerticalParent) {
 
 		// TODO: check and probably remove additional containers

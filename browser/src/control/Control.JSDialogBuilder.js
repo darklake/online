@@ -35,9 +35,7 @@ _fetchJson('l10n/locore/' + window.langParam + '.json', 'locore');
 _fetchJson('l10n/uno/' + window.langParam + '.json', 'uno');
 
 L.Control.JSDialogBuilder = L.Control.extend({
-	_translate: function (key) {
-		return _translate(key, false);
-	},
+	
 	_translate: function (key, removeTag) {
 		console.log('translations : ' + translations + '. translations[window.langParam] : ' + translations[window.langParam]);
 		if (removeTag) {
@@ -70,6 +68,9 @@ L.Control.JSDialogBuilder = L.Control.extend({
 			value = value.replace(/\(.*?\)/, '');
 		}
 		return value;
+	},
+	_translate: function (key) {
+		return _translate(key, false);
 	},
 	options: {
 		// window id

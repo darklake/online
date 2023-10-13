@@ -5,7 +5,69 @@
  */
 
 /* global app $ w2ui _ _UNO L JSDialog */
+var translations = {};
+
+//./browser/dist/l10n/help-ko.json
+//./browser/dist/l10n/ui-ko.json
+//./browser/dist/l10n/locore/ko.json
+//./browser/dist/l10n/uno/ko.json
+
+var _fetchJson = function (fileName, modeName) {
+	fetch(fileName)
+	.then(function (response) {
+		var data = response.json();
+		return data;
+	})
+	.then(function (data) {
+		if (!translations[window.langParam]) {
+			translations[window.langParam] = {};
+		}
+		translations[window.langParam][modeName] = data;
+	})
+	.catch(function(error) {
+		console.error('There was a problem with the fetch operation:', error.message);
+	});
+};
+
+_fetchJson('l10n/help-' + window.langParam + '.json', 'help');
+_fetchJson('l10n/ui-' + window.langParam + '.json', 'ui');
+_fetchJson('l10n/locore/' + window.langParam + '.json', 'locore');
+_fetchJson('l10n/uno/' + window.langParam + '.json', 'uno');
+
 L.Control.JSDialogBuilder = L.Control.extend({
+	
+	_translate: function (key, removeTag) {
+		if (removeTag) {
+			key = key.replace('~', '');
+		}
+		var value = key;
+		if (translations && translations[window.langParam]) {
+			if (translations[window.langParam]['ui']) {
+				if (translations[window.langParam]['ui'][key]) {
+					value = translations[window.langParam]['ui'][key];
+				}
+			}
+			if (translations[window.langParam]['locore']) {
+				if (translations[window.langParam]['locore'][key]) {
+					value = translations[window.langParam]['locore'][key];
+				}
+			}
+			if (translations[window.langParam]['uno']) {
+				if (translations[window.langParam]['uno'][key]) {
+					value = translations[window.langParam]['uno'][key];
+				}
+			}
+			if (translations[window.langParam]['help']) {
+				if (translations[window.langParam]['help'][key]) {
+					value = translations[window.langParam]['help'][key];
+				}
+			}
+		}
+		if (removeTag) {
+			value = value.replace(/\(.*?\)/, '');
+		}
+		return value;
+	},
 	options: {
 		// window id
 		windowId: null,
@@ -1920,6 +1982,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 
 				var option = L.DomUtil.create('option', '', listbox);
 				option.value = index;
+				console.log('data.entries[index] : ', data.entries[index]);
 				option.innerText = builder._cleanText(data.entries[index]);
 				if (isSelected) {
 					option.selected = true;
@@ -3437,9 +3500,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 			&& data.type !== 'treelistbox')
 			control.setAttribute('tabIndex', '0');
 	},
-	translate: function (key, removeTag) {
-		return this._translate(key, removeTag);
-	},
+
 	build: function (parent, data, hasVerticalParent) {
 
 		// TODO: check and probably remove additional containers

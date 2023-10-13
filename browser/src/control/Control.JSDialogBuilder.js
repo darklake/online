@@ -568,7 +568,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 				element.innerHTML = converted + '(' + '<u class="access-key">' + accessKey.replace('~', '') + '</u>' + ')';
 			}
 
-			console.log('key : ' + key + ', converted : ' + converted + ', element.innerHTML : ' + element.innerHTML);
+			console.log('text : ' + text + ', converted : ' + converted + ', element.innerHTML : ' + element.innerHTML);
 		}
 	},
 

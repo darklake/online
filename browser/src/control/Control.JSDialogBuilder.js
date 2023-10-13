@@ -69,9 +69,6 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		}
 		return value;
 	},
-	_translate: function (key) {
-		return _translate(key, false);
-	},
 	options: {
 		// window id
 		windowId: null,
@@ -563,7 +560,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		var text = element.textContent;
 		var index = text.indexOf(accessKey);
 		if (index >= 0) {
-			var converted = this._translate(text);
+			var converted = this._translate(text, false);
 			console.log('text : ' + text + ', converted : ' + converted + ', accessKey : ' + accessKey + ', included : ' + converted.includes(accessKey));
 			if (converted.includes(accessKey)) {
 				element.innerHTML = text.replace(accessKey, '<u class="access-key">' + accessKey.replace('~', '') + '</u>');
@@ -598,7 +595,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		if (!text)
 			return '';
 
-		text = this._translate(text);
+		text = this._translate(text, false);
 		
 		if (text.endsWith('...'))
 			text = text.slice(0, -3);
@@ -916,7 +913,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		updateCallback ? updateCallback(titleSpan) : updateFunction(titleSpan);
 
 		var contentDiv = L.DomUtil.create('div', 'ui-content level-' + builder._currentDepth + ' ' + builder.options.cssClass, mainContainer);
-		contentDiv.title = builder._translate(data.text);
+		contentDiv.title = builder._translate(data.text, false);
 
 		var contentData = content.length ? content : [content];
 		var contentNode = contentData.length === 1 ? contentData[0] : null;
@@ -962,7 +959,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		arrowSpan.textContent = '';
 
 		var contentDiv = L.DomUtil.create('div', 'ui-content level-' + builder._currentDepth + ' ' + builder.options.cssClass, mainContainer);
-		contentDiv.title = builder._translate(data.text);
+		contentDiv.title = builder._translate(data.text, false);
 
 		builder._currentDepth++;
 		builder.build(contentDiv, [contentNode]);
@@ -1108,7 +1105,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		arrowSpan.textContent = '>';
 
 		var contentDiv = L.DomUtil.create('div', 'ui-content level-' + builder._currentDepth + ' ' + builder.options.cssClass, mainContainer);
-		contentDiv.title = builder._translate(title);
+		contentDiv.title = builder._translate(title, false);
 
 		if (customContent) {
 			contentDiv.appendChild(customContent);
@@ -1264,7 +1261,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 					$(tab).addClass('selected');
 					tab.setAttribute('aria-selected', 'true');
 					tab.tabIndex = '0';
-					tab.title = builder._translate(tabTooltip);
+					tab.title = builder._translate(tabTooltip, false);
 					singleTabId = tabIdx;
 				} else {
 					tab.setAttribute('aria-selected', 'false');
@@ -1883,7 +1880,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		arrowSpan.textContent = '>';
 
 		var contentDiv = L.DomUtil.create('div', 'ui-content level-' + builder._currentDepth + ' ' + builder.options.cssClass, parentContainer);
-		contentDiv.title = builder._translate(data.text);
+		contentDiv.title = builder._translate(data.text, false);
 
 		var entries = [];
 		if (data.entries) {
@@ -2243,7 +2240,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 				childContainer = L.DomUtil.create('div', 'ui-content level-' + builder._currentDepth + ' ' + builder.options.cssClass, mainContainer);
 
 			childContainer.id = 'comment-thread' + data.id;
-			childContainer.title = builder._translate(_('Comment'));
+			childContainer.title = builder._translate(_('Comment'), false);
 
 			$(childContainer).hide();
 
@@ -3068,7 +3065,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 			div.id = id;
 			div.tabIndex = -1;
 
-			div.title = builder._translate(data.text);
+			div.title = builder._translate(data.text, false);
 			builder.map.uiManager.enableTooltip(div);
 
 			var icon = builder._createIconURL(data.command);

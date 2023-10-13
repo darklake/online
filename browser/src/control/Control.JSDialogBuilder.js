@@ -64,6 +64,9 @@ L.Control.JSDialogBuilder = L.Control.extend({
 			}
 		}
 
+		if (value === key) {
+			console.log('ITEM: ' + key);
+		}
 		if (removeTag) {
 			value = value.replace(/\(.*?\)/, '');
 		}
@@ -567,8 +570,6 @@ L.Control.JSDialogBuilder = L.Control.extend({
 			} else {
 				element.innerHTML = converted + '(' + '<u class="access-key">' + accessKey.replace('~', '') + '</u>' + ')';
 			}
-
-			console.log('text : ' + text + ', converted : ' + converted + ', element.innerHTML : ' + element.innerHTML);
 		}
 	},
 

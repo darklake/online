@@ -511,7 +511,7 @@ msgstr "입방형"
 
 #: src/control/Control.JSDialogBuilder.js:570
 msgid "Square"
-msgstr "정방형"
+msgstr "정사각형"
 
 #: src/control/Control.JSDialogBuilder.js:573
 msgid "Fixed size"

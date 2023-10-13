@@ -36,6 +36,7 @@ _fetchJson('l10n/uno/' + window.langParam + '.json', 'uno');
 
 L.Control.JSDialogBuilder = L.Control.extend({
 	_translate: function (key) {
+		console.log('translations : ' + translations + '. translations[window.langParam] : ' + translations[window.langParam]);
 		if (translations && translations[window.langParam]) {
 			if (translations[window.langParam]['ui']) {
 				if (translations[window.langParam]['ui'][key]) {

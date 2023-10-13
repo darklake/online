@@ -36,7 +36,15 @@ _fetchJson('l10n/uno/' + window.langParam + '.json', 'uno');
 
 L.Control.JSDialogBuilder = L.Control.extend({
 	_isAscii: function (str) {
-		return /^[\x00-\x7F]*$/.test(str);
+		if (/^[^A-Za-z]*$/.test(str)) {
+			return false;
+		}
+
+		if (!/^[\x00-\x7F]*$/.test(str)) {
+			return false;
+		}
+
+		return true;
 	},
 	
 	_translate: function (key, removeTag) {

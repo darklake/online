@@ -991,6 +991,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 				var label = L.DomUtil.create('span', 'ui-expander-label ' + builder.options.cssClass, expander);
 				var cleanText = builder._cleanText(data.children[0].text);
 				label.innerText = cleanText;
+				console.log('label 1 : ' + label.innerText);
 				label.id = data.children[0].id ? data.children[0].id : data.id + '-label';
 				if (data.children[0].visible === false)
 					L.DomUtil.addClass(label, 'hidden');
@@ -1555,6 +1556,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		var checkboxLabel = L.DomUtil.create('label', builder.options.cssClass, div);
 		checkboxLabel.id = data.id + '-label';
 		checkboxLabel.textContent = builder._cleanText(data.text);
+		console.log('label 2 : ' + checkboxLabel.textContent);
 		checkboxLabel.htmlFor = data.id;
 
 		checkbox.setAttribute('aria-labelledby', checkboxLabel.id);

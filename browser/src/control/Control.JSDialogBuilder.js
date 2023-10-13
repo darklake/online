@@ -35,6 +35,9 @@ _fetchJson('l10n/locore/' + window.langParam + '.json', 'locore');
 _fetchJson('l10n/uno/' + window.langParam + '.json', 'uno');
 
 L.Control.JSDialogBuilder = L.Control.extend({
+	_isAscii: function (str) {
+		return /^[\x00-\x7F]*$/.test(str);
+	},
 	
 	_translate: function (key, removeTag) {
 		if (removeTag) {
@@ -65,7 +68,9 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		}
 
 		if (value === key) {
-			console.log('ITEM: ' + key);
+			if (_isAscii(key)) {
+				console.log('ITEM: ' + key);
+			}
 		}
 		if (removeTag) {
 			value = value.replace(/\(.*?\)/, '');

@@ -1991,7 +1991,12 @@ L.Control.JSDialogBuilder = L.Control.extend({
 				var option = L.DomUtil.create('option', '', listbox);
 				option.value = index;
 				console.log('data.entries[index] : ', data.entries[index]);
-				option.innerText = builder._cleanText(data.entries[index]);
+				if (container.id === 'fontnamecombobox' || container.id === 'fontsizecombobox') {
+					option.innerText = data.entries[index];
+				} else {
+					option.innerText = builder._cleanText(data.entries[index]);
+				}
+				
 				if (isSelected) {
 					option.selected = true;
 					hasSelectedEntry = true;

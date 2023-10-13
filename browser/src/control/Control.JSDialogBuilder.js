@@ -1556,7 +1556,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		var checkboxLabel = L.DomUtil.create('label', builder.options.cssClass, div);
 		checkboxLabel.id = data.id + '-label';
 		checkboxLabel.textContent = builder._cleanText(data.text);
-		console.log('label 2 : ' + checkboxLabel.textContent);
+		console.log('label 2 : ' + checkboxLabel.textContent + ', data.text : ' + data.text);
 		checkboxLabel.htmlFor = data.id;
 
 		checkbox.setAttribute('aria-labelledby', checkboxLabel.id);

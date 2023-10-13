@@ -561,11 +561,14 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		var index = text.indexOf(accessKey);
 		if (index >= 0) {
 			var converted = this._translate(text, false);
+			
 			if (converted.includes(accessKey)) {
 				element.innerHTML = text.replace(accessKey, '<u class="access-key">' + accessKey.replace('~', '') + '</u>');
 			} else {
 				element.innerHTML = converted + '(' + '<u class="access-key">' + accessKey.replace('~', '') + '</u>' + ')';
 			}
+
+			console.log('key : ' + key + ', converted : ' + converted + ', element.innerHTML : ' + element.innerHTML);
 		}
 	},
 

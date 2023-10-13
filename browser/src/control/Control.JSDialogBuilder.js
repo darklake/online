@@ -36,30 +36,40 @@ _fetchJson('l10n/uno/' + window.langParam + '.json', 'uno');
 
 L.Control.JSDialogBuilder = L.Control.extend({
 	_translate: function (key) {
+		return _translate(key, false);
+	},
+	_translate: function (key, removeTag) {
 		console.log('translations : ' + translations + '. translations[window.langParam] : ' + translations[window.langParam]);
+		if (removeTag) {
+			key = key.replace('~', '');
+		}
+		var value = key;
 		if (translations && translations[window.langParam]) {
 			if (translations[window.langParam]['ui']) {
 				if (translations[window.langParam]['ui'][key]) {
-					return translations[window.langParam]['ui'][key];
+					value = translations[window.langParam]['ui'][key];
 				}
 			}
 			if (translations[window.langParam]['locore']) {
 				if (translations[window.langParam]['locore'][key]) {
-					return translations[window.langParam]['locore'][key];
+					value = translations[window.langParam]['locore'][key];
 				}
 			}
 			if (translations[window.langParam]['uno']) {
 				if (translations[window.langParam]['uno'][key]) {
-					return translations[window.langParam]['uno'][key];
+					value = translations[window.langParam]['uno'][key];
 				}
 			}
 			if (translations[window.langParam]['help']) {
 				if (translations[window.langParam]['help'][key]) {
-					return translations[window.langParam]['help'][key];
+					value = translations[window.langParam]['help'][key];
 				}
 			}
 		}
-		return key;
+		if (removeTag) {
+			value = value.replace(/\(.*?\)/, '');
+		}
+		return value;
 	},
 	options: {
 		// window id
@@ -2603,7 +2613,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 			} else if (builder.options.useInLineLabelsForUnoButtons === true) {
 				$(div).addClass('no-label');
 			} else {
-				div.title = builder._translate(data.text);
+				div.title = builder._translate(data.text, true);
 				button.setAttribute('alt', data.text);
 				buttonImage.alt = data.text;
 				builder.map.uiManager.enableTooltip(div);

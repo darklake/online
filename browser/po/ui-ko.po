@@ -1105,6 +1105,10 @@ msgstr "읽기 전용"
 msgid "Background Color"
 msgstr "배경색"
 
+msgid "Increase"
+msgstr "늘이기"
+
+
 #: src/control/Control.MobileWizardBuilder.js:513
 msgid "Gradient Start"
 msgstr "그라데이션 시작"

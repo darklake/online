@@ -905,7 +905,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		updateCallback ? updateCallback(titleSpan) : updateFunction(titleSpan);
 
 		var contentDiv = L.DomUtil.create('div', 'ui-content level-' + builder._currentDepth + ' ' + builder.options.cssClass, mainContainer);
-		contentDiv.title = data.text;
+		contentDiv.title = builder._translate(data.text);
 
 		var contentData = content.length ? content : [content];
 		var contentNode = contentData.length === 1 ? contentData[0] : null;
@@ -951,7 +951,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		arrowSpan.textContent = '';
 
 		var contentDiv = L.DomUtil.create('div', 'ui-content level-' + builder._currentDepth + ' ' + builder.options.cssClass, mainContainer);
-		contentDiv.title = data.text;
+		contentDiv.title = builder._translate(data.text);
 
 		builder._currentDepth++;
 		builder.build(contentDiv, [contentNode]);
@@ -1097,7 +1097,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		arrowSpan.textContent = '>';
 
 		var contentDiv = L.DomUtil.create('div', 'ui-content level-' + builder._currentDepth + ' ' + builder.options.cssClass, mainContainer);
-		contentDiv.title = title;
+		contentDiv.title = builder._translate(title);
 
 		if (customContent) {
 			contentDiv.appendChild(customContent);
@@ -1253,7 +1253,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 					$(tab).addClass('selected');
 					tab.setAttribute('aria-selected', 'true');
 					tab.tabIndex = '0';
-					tab.title = tabTooltip;
+					tab.title = builder._translate(tabTooltip);
 					singleTabId = tabIdx;
 				} else {
 					tab.setAttribute('aria-selected', 'false');
@@ -1872,7 +1872,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		arrowSpan.textContent = '>';
 
 		var contentDiv = L.DomUtil.create('div', 'ui-content level-' + builder._currentDepth + ' ' + builder.options.cssClass, parentContainer);
-		contentDiv.title = data.text;
+		contentDiv.title = builder._translate(data.text);
 
 		var entries = [];
 		if (data.entries) {
@@ -2232,7 +2232,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 				childContainer = L.DomUtil.create('div', 'ui-content level-' + builder._currentDepth + ' ' + builder.options.cssClass, mainContainer);
 
 			childContainer.id = 'comment-thread' + data.id;
-			childContainer.title = _('Comment');
+			childContainer.title = builder._translate(_('Comment'));
 
 			$(childContainer).hide();
 
@@ -2603,7 +2603,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 			} else if (builder.options.useInLineLabelsForUnoButtons === true) {
 				$(div).addClass('no-label');
 			} else {
-				div.title = data.text;
+				div.title = builder._translate(data.text);
 				button.setAttribute('alt', data.text);
 				buttonImage.alt = data.text;
 				builder.map.uiManager.enableTooltip(div);
@@ -3057,7 +3057,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 			div.id = id;
 			div.tabIndex = -1;
 
-			div.title = data.text;
+			div.title = builder._translate(data.text);
 			builder.map.uiManager.enableTooltip(div);
 
 			var icon = builder._createIconURL(data.command);

@@ -2611,9 +2611,12 @@ L.Control.JSDialogBuilder = L.Control.extend({
 			} else if (builder.options.useInLineLabelsForUnoButtons === true) {
 				$(div).addClass('no-label');
 			} else {
-				div.title = builder._translate(data.text, true);
-				button.setAttribute('alt', data.text);
-				buttonImage.alt = data.text;
+				var trans = builder._translate(data.text, true);
+				div.title = trans;
+				console.log('data.text : ' + data.text + ', div.title : ' + div.title);
+				
+				button.setAttribute('alt', trans);
+				buttonImage.alt = trans;
 				builder.map.uiManager.enableTooltip(div);
 				$(div).addClass('no-label');
 			}

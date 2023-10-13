@@ -68,6 +68,9 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		}
 		return value;
 	},
+	translate: function (key, removeTag) {
+		return this._translate(key, removeTag);
+	},
 	options: {
 		// window id
 		windowId: null,

@@ -1379,6 +1379,10 @@ msgstr "표 삽입"
 msgid "Insert Columns Before"
 msgstr "현재 시트 앞에 시트 삽입"
 
+msgid "Columns Before"
+msgstr "현재 시트 앞에 시트 삽입"
+
+
 #: src/control/Control.NotebookbarCalc.js:971
 msgid "Delete Rows"
 msgstr "삭제"
@@ -1389,6 +1393,9 @@ msgstr "시트 삽입"
 
 #: src/control/Control.NotebookbarCalc.js:990
 msgid "Insert Columns After"
+msgstr "현재 시트 뒤에 시트 삽입"
+
+msgid "Columns After"
 msgstr "현재 시트 뒤에 시트 삽입"
 
 #: src/control/Control.NotebookbarCalc.js:997

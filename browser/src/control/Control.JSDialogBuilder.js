@@ -51,6 +51,10 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		if (removeTag) {
 			key = key.replace('~', '');
 		}
+		if (key.endsWith(':')) {
+			key = key.slice(0, -1);
+		}
+		
 		var value = key;
 		if (translations && translations[window.langParam]) {
 			if (translations[window.langParam]['ui']) {

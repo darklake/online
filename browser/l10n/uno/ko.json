@@ -265,7 +265,8 @@
 "Line Spacing: 1":"행간: 1",
 "Line Spacing: 1.5":"행간: 1.5",
 "Line Spacing: 2":"행간: 2",
-
+"~Spacing:":"간격",
+"~Indent:":"들여쓰기",
 "Single":"1줄",
 "1.15 Lines":"1.15줄",
 "1.5 Lines":"1.5줄",

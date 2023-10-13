@@ -556,6 +556,23 @@ msgstr "단락"
 msgid "Spacing:"
 msgstr "간격"
 
+msgid "Spacing: 1"
+msgstr "간격: 1"
+
+msgid "Spacing: 1.15"
+msgstr "간격: 1.15"
+
+msgid "Spacing: 1.5"
+msgstr "간격: 1.5"
+
+msgid "Spacing: 2"
+msgstr "간격: 2"
+
+msgid "Custom Value"
+msgstr "사용자 지정값"
+
+
+
 msgid "Indent:"
 msgstr "들여쓰기"
 

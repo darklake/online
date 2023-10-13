@@ -37,7 +37,6 @@ _fetchJson('l10n/uno/' + window.langParam + '.json', 'uno');
 L.Control.JSDialogBuilder = L.Control.extend({
 	
 	_translate: function (key, removeTag) {
-		console.log('translations : ' + translations + '. translations[window.langParam] : ' + translations[window.langParam]);
 		if (removeTag) {
 			key = key.replace('~', '');
 		}
@@ -561,20 +560,16 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		var index = text.indexOf(accessKey);
 		if (index >= 0) {
 			var converted = this._translate(text, false);
-			console.log('text : ' + text + ', converted : ' + converted + ', accessKey : ' + accessKey + ', included : ' + converted.includes(accessKey));
 			if (converted.includes(accessKey)) {
 				element.innerHTML = text.replace(accessKey, '<u class="access-key">' + accessKey.replace('~', '') + '</u>');
 			} else {
 				element.innerHTML = converted + '(' + '<u class="access-key">' + accessKey.replace('~', '') + '</u>' + ')';
 			}
-
-			console.log('text : ' + text + ', element.innerHTML : ' + element.innerHTML);
 		}
 	},
 
 	_setAccessKey: function (element, key) {
 		if (key) {
-			console.log('accessKey, key : ' + key);
 			element.accessKey = key;
 		}
 	},
@@ -587,7 +582,6 @@ L.Control.JSDialogBuilder = L.Control.extend({
 				nextChar = text.charAt(index + 1);
 			}
 		}
-		console.log('nextChar : ' + nextChar);
 		return nextChar;
 	},
 
@@ -1988,9 +1982,6 @@ L.Control.JSDialogBuilder = L.Control.extend({
 
 				var option = L.DomUtil.create('option', '', listbox);
 				option.value = index;
-				console.log('data : ', data);
-				console.log('data.entries : ', data.entries);
-				console.log('data.entries[index] : ', data.entries[index]);
 				option.innerText = builder._cleanText(data.entries[index]);
 				if (isSelected) {
 					option.selected = true;
@@ -2613,7 +2604,6 @@ L.Control.JSDialogBuilder = L.Control.extend({
 			} else {
 				var trans = builder._translate(data.text, true);
 				div.title = trans;
-				console.log('data.text : ' + data.text + ', div.title : ' + div.title);
 				
 				button.setAttribute('alt', trans);
 				buttonImage.alt = trans;

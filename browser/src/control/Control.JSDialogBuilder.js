@@ -51,10 +51,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		if (removeTag) {
 			key = key.replace('~', '');
 		}
-		if (key.endsWith(':')) {
-			key = key.slice(0, -1);
-		}
-		
+
 		var value = key;
 		if (translations && translations[window.langParam]) {
 			if (translations[window.langParam]['ui']) {
@@ -80,8 +77,14 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		}
 
 		if (value === key) {
-			if (this._isAscii(key)) {
-				console.log('ITEM: ' + key + ', value : ' + value);
+			if (key.endsWith(':')) {
+				value = this._translate(key.slice(0, -1), false);
+			}
+			
+			if (value === key) {
+				if (this._isAscii(key)) {
+					console.log('ITEM: ' + key + ', value : ' + value);
+				}
 			}
 		}
 		if (removeTag) {

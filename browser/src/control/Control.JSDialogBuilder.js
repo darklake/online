@@ -63,6 +63,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 				}
 			}
 		}
+
 		if (removeTag) {
 			value = value.replace(/\(.*?\)/, '');
 		}
@@ -993,9 +994,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 				label.innerText = cleanText;
 				console.log('label 1 : ' + label.innerText);
 				label.id = data.children[0].id ? data.children[0].id : data.id + '-label';
-				//label.attr('title', data.children[0].text);
-				label.title = data.children[0].text;
-				
+
 				if (data.children[0].visible === false)
 					L.DomUtil.addClass(label, 'hidden');
 				builder.postProcess(expander, data.children[0]);

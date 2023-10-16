@@ -12,6 +12,7 @@ var translations = {};
 //./browser/dist/l10n/locore/ko.json
 //./browser/dist/l10n/uno/ko.json
 
+var checked = [];
 var _fetchJson = function (fileName, modeName) {
 	fetch(fileName)
 		.then(function (response) {
@@ -104,7 +105,12 @@ L.Control.JSDialogBuilder = L.Control.extend({
 
 		if (value === key) {
 			if (this._isAscii(key)) {
-				console.log('ITEM: ' + key);
+				if (!checked.hasAttribute(key)) {
+					if (key != '12 pt' && key != 'Liberation Serif') {
+						checked.push(key);
+						console.log('ITEM: ' + key);
+					}
+				}
 			}
 		}
 		if (removeTag) {

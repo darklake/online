@@ -109,7 +109,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 
 			if (value === key) {
 				if (this._isAscii(key)) {
-					console.log('ITEM: ' + key + ', value : ' + value);
+					console.log('ITEM: ' + key);
 				}
 			}
 		}

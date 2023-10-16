@@ -46,7 +46,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 
 		return true;
 	},
-	_retranslate: function (key, removeTag) {
+	_retranslate: function (key) {
 		var value = key;
 		if (translations && translations[window.langParam]) {
 			if (translations[window.langParam]['ui']) {

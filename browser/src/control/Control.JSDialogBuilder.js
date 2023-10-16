@@ -75,7 +75,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 	},
 	_translate: function (key, removeTag) {
 		if (removeTag) {
-			key = key;//key.replace('~', '');
+			//key = key;//key.replace('~', '');
 		}
 
 		var value = key;

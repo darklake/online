@@ -662,5 +662,20 @@
 "Beveled":"빗면 모양",
 "Flat":"평면",
 "Round":"둥글게",
-"Effect":"효과"
+"Effect":"효과",
+"Fill":"채우기",
+"~Import":"불러오기",
+"Import":"불러오기",
+"Arrow Style":"화살표 모양",
+"Line Style":"선 모양",
+"Glow":"광원",
+"Soft Edge":"모서리 둥글기",
+"Position X":"X 좌표",
+"Position Y":"Y 좌표",
+"Rotation":"좌표",
+"Flip":"뒤집기",
+"Bring to Front":"앞으로 보내기",
+"Send to Back":"뒤로 보내기",
+"Align":"정렬",
+"Edit Object":"수정"
 }

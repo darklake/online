@@ -58,7 +58,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 				// Code throwing an exception
 				throw new Error();
 			} catch (e) {
-				console.log('CCCCC, stack : ' + format(e.stack));
+				console.log('CCCCC, stack : ' + (e.stack));
 			}
 		}
 

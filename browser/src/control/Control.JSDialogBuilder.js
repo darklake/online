@@ -46,7 +46,33 @@ L.Control.JSDialogBuilder = L.Control.extend({
 
 		return true;
 	},
+	_retranslate: function (key, removeTag) {
+		var value = key;
+		if (translations && translations[window.langParam]) {
+			if (translations[window.langParam]['ui']) {
+				if (translations[window.langParam]['ui'][key]) {
+					value = translations[window.langParam]['ui'][key];
+				}
+			}
+			if (translations[window.langParam]['locore']) {
+				if (translations[window.langParam]['locore'][key]) {
+					value = translations[window.langParam]['locore'][key];
+				}
+			}
+			if (translations[window.langParam]['uno']) {
+				if (translations[window.langParam]['uno'][key]) {
+					value = translations[window.langParam]['uno'][key];
+				}
+			}
+			if (translations[window.langParam]['help']) {
+				if (translations[window.langParam]['help'][key]) {
+					value = translations[window.langParam]['help'][key];
+				}
+			}
+		}
 
+		return value;
+	},
 	_translate: function (key, removeTag) {
 		if (removeTag) {
 			key = key.replace('~', '');
@@ -78,7 +104,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 
 		if (value === key) {
 			if (key.endsWith(':')) {
-				value = this._translate(key.slice(0, -1), false);
+				value = this._retranslate(key.slice(0, -1), false);
 			}
 
 			if (value === key) {

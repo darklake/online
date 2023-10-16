@@ -103,14 +103,8 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		}
 
 		if (value === key) {
-			if (key.endsWith(':')) {
-				value = this._retranslate(key.slice(0, -1), false);
-			}
-
-			if (value === key) {
-				if (this._isAscii(key)) {
-					console.log('ITEM: ' + key);
-				}
+			if (this._isAscii(key)) {
+				console.log('ITEM: ' + key);
 			}
 		}
 		if (removeTag) {

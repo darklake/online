@@ -52,6 +52,16 @@ L.Control.JSDialogBuilder = L.Control.extend({
 			key = key.replace('~', '');
 		}
 
+		if (key.includes("Indent")) {
+			try {
+				// 예외를 발생시킬 코드
+				throw new Error("Indent included");
+			  } catch (e) {
+				// 에러 객체에서 스택 트레이스 정보 출력
+				console.error(e.stack);
+			  }
+		}
+
 		var value = key;
 		if (translations && translations[window.langParam]) {
 			if (translations[window.langParam]['ui']) {

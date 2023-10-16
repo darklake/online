@@ -53,12 +53,12 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		}
 
 		console.log('CCCCC, ITEM: ' + key);
-		if (key.includes("indent")) {
+		if (key.includes('indent')) {
 			try {
 				// Code throwing an exception
 				throw new Error();
 			} catch (e) {
-				console.log(e.stack);
+				console.log('CCCCC, stack : ' + format(e.stack));
 			}
 		}
 

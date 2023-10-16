@@ -52,16 +52,6 @@ L.Control.JSDialogBuilder = L.Control.extend({
 			key = key.replace('~', '');
 		}
 
-		console.log('CCCCC, ITEM: ' + key);
-		if (key.includes('Indent')) {
-			try {
-				// Code throwing an exception
-				throw new Error();
-			} catch (e) {
-				console.log('CCCCC, stack : ' + (e.stack));
-			}
-		}
-
 		var value = key;
 		if (translations && translations[window.langParam]) {
 			if (translations[window.langParam]['ui']) {

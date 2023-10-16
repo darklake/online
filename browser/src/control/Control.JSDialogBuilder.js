@@ -52,7 +52,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 			key = key.replace('~', '');
 		}
 
-		if (key.includes("Indent")) {
+		if (key.includes("indent")) {
 			try {
 				// 예외를 발생시킬 코드
 				throw new Error("Indent included");

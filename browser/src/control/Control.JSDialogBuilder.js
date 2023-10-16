@@ -14,19 +14,19 @@ var translations = {};
 
 var _fetchJson = function (fileName, modeName) {
 	fetch(fileName)
-	.then(function (response) {
-		var data = response.json();
-		return data;
-	})
-	.then(function (data) {
-		if (!translations[window.langParam]) {
-			translations[window.langParam] = {};
-		}
-		translations[window.langParam][modeName] = data;
-	})
-	.catch(function(error) {
-		console.error('There was a problem with the fetch operation:', error.message);
-	});
+		.then(function (response) {
+			var data = response.json();
+			return data;
+		})
+		.then(function (data) {
+			if (!translations[window.langParam]) {
+				translations[window.langParam] = {};
+			}
+			translations[window.langParam][modeName] = data;
+		})
+		.catch(function (error) {
+			console.error('There was a problem with the fetch operation:', error.message);
+		});
 };
 
 _fetchJson('l10n/help-' + window.langParam + '.json', 'help');
@@ -46,16 +46,20 @@ L.Control.JSDialogBuilder = L.Control.extend({
 
 		return true;
 	},
-	
+
 	_translate: function (key, removeTag) {
 		if (removeTag) {
 			key = key.replace('~', '');
 		}
 
-		console.log('CCCCC, key : ' + key);
+		console.log('CCCCC, ITEM: ' + key);
 		if (key.includes("indent")) {
-			var err = new Error();
-			console.log('CCCCC, error ' + format(e.stack));
+			try {
+				// Code throwing an exception
+				throw new Error();
+			} catch (e) {
+				console.log(e.stack);
+			}
 		}
 
 		var value = key;
@@ -86,7 +90,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 			if (key.endsWith(':')) {
 				value = this._translate(key.slice(0, -1), false);
 			}
-			
+
 			if (value === key) {
 				if (this._isAscii(key)) {
 					console.log('ITEM: ' + key + ', value : ' + value);
@@ -590,7 +594,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		var index = text.indexOf(accessKey);
 		if (index >= 0) {
 			var converted = this._translate(text, false);
-			
+
 			if (converted.includes(accessKey)) {
 				element.innerHTML = text.replace(accessKey, '<u class="access-key">' + accessKey.replace('~', '') + '</u>');
 			} else {
@@ -621,7 +625,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 			return '';
 
 		text = this._translate(text, false);
-		
+
 		if (text.endsWith('...'))
 			text = text.slice(0, -3);
 		return text.replace('~', '');
@@ -2022,7 +2026,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 				} else {
 					option.innerText = builder._cleanText(data.entries[index]);
 				}
-				
+
 				if (isSelected) {
 					option.selected = true;
 					hasSelectedEntry = true;
@@ -2644,7 +2648,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 			} else {
 				var trans = builder._translate(data.text, true);
 				div.title = trans;
-				
+
 				button.setAttribute('alt', trans);
 				buttonImage.alt = trans;
 				builder.map.uiManager.enableTooltip(div);

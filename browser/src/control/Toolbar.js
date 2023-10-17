@@ -59,7 +59,7 @@ L.Map.include({
 			console.log('KR, font, data : ', data);
 			console.log('KR, font, data.length : ', data.length);
 			fontcombobox.empty();
-			for (var i = 0; i < data.length && i < 10; ++i) {
+			for (var i = 0; i < data.length; ++i) {
 				if (!data[i]) continue;
 				var option = document.createElement('option');
 				console.log('KR, option : ', option);
@@ -67,7 +67,7 @@ L.Map.include({
 				option.value = data[i];
 				fontcombobox.append(data[i]);
 			}
-			fontcombobox.on('select2:select', that.onFontSelect.bind(that));
+			//fontcombobox.on('select2:select', that.onFontSelect.bind(that));
 
 			fontcombobox.val(that._getCurrentFontName()).trigger('change');
 		};

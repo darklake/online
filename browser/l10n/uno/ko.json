@@ -774,7 +774,13 @@
 "Zig Zag":"지그재그",
 "Weave":"직물 무늬",
 "Sphere":"구체",
-"Dashed Horizontal":"점선 수평",
-"Large Confetti":"큰 코페티",
-"Divot":"Divot"
+"Dashed Horizontal":"수평 점선",
+"Large Confetti":"큰 색종이",
+"Divot":"Divot",
+"~None":"없음",
+"~Recent":"최근",
+"Center ~X:":"X 축:",
+"Center X:":"X 축:",
+"Center ~Y:":"Y 축:",
+"Center Y:":"Y 축:"
 }

@@ -105,7 +105,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 
 		if (value === key) {
 			if (this._isAscii(key)) {
-				if (!checked.hasAttribute(key)) {
+				if (!checked.includes(key)) {
 					if (key != '12 pt' && key != 'Liberation Serif') {
 						checked.push(key);
 						console.log('ITEM: ' + key);

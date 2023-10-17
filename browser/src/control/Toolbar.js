@@ -13,40 +13,47 @@ L.Map.include({
 	],
 
 	_modalDialogOptions: {
-		overlayClose:true,
+		overlayClose: true,
 		opacity: 80,
 		overlayCss: {
-			backgroundColor : '#000'
+			backgroundColor: '#000'
 		},
 		containerCss: {
-			overflow : 'hidden',
-			backgroundColor : '#fff',
-			padding : '20px',
-			border : '2px solid #000'
+			overflow: 'hidden',
+			backgroundColor: '#fff',
+			padding: '20px',
+			border: '2px solid #000'
 		}
 	},
 
-	onFontSelect: function(e) {
+	onFontSelect: function (e) {
 		var font = e.target.value;
 		this.applyFont(font);
 		this.focus();
 	},
 
-	_getCurrentFontName: function() {
+	_getCurrentFontName: function () {
 		return this['stateChangeHandler'].getItemValue('.uno:CharFontName');
 	},
 
-	createFontSelector: function(nodeSelector) {
+	createFontSelector: function (nodeSelector) {
 		var that = this;
 
 		var fontcombobox = $(nodeSelector);
+
+		fontcombobox.onclick = function () {
+			// 클릭 이벤트 처리 코드를 여기에 작성합니다.
+			alert("fontcombobox가 클릭되었습니다!");
+		};
+
+
 		if (!fontcombobox.hasClass('select2')) {
 			fontcombobox.select2({
 				placeholder: _('Font')
 			});
 		}
 
-		var createSelector = function() {
+		var createSelector = function () {
 			var commandValues = that.getToolbarCommandValues('.uno:CharFontName');
 
 			var data = []; // reset data in order to avoid that the font select box is populated with styles, too.
@@ -55,7 +62,7 @@ L.Map.include({
 			if (typeof commandValues === 'object') {
 				data = data.concat(Object.keys(commandValues));
 			}
-			
+
 			fontcombobox.empty();
 			for (var i = 0; i < data.length; ++i) {
 				if (!data[i]) continue;
@@ -71,7 +78,7 @@ L.Map.include({
 
 		createSelector();
 
-		var onCommandStateChanged = function(e) {
+		var onCommandStateChanged = function (e) {
 			var commandName = e.commandName;
 
 			if (commandName !== '.uno:CharFontName')
@@ -96,7 +103,7 @@ L.Map.include({
 			fontcombobox.val(state).trigger('change');
 		};
 
-		var onFontListChanged = function(e) {
+		var onFontListChanged = function (e) {
 			if (e.commandName === '.uno:CharFontName')
 				createSelector();
 		};
@@ -107,12 +114,12 @@ L.Map.include({
 		this.on('updatetoolbarcommandvalues', onFontListChanged);
 	},
 
-	onFontSizeSelect: function(e) {
+	onFontSizeSelect: function (e) {
 		this.applyFontSize(e.target.value);
 		this.focus();
 	},
 
-	createFontSizeSelector: function(nodeSelector) {
+	createFontSizeSelector: function (nodeSelector) {
 		var data = [6, 7, 8, 9, 10, 10.5, 11, 12, 13, 14, 15, 16, 18, 20,
 			22, 24, 26, 28, 32, 36, 40, 44, 48, 54, 60, 66, 72, 80, 88, 96];
 
@@ -123,7 +130,7 @@ L.Map.include({
 				width: 'auto',
 				placeholder: _('Font Size'),
 				//Allow manually entered font size.
-				createTag: function(query) {
+				createTag: function (query) {
 					return {
 						id: query.term,
 						text: query.term,
@@ -131,9 +138,11 @@ L.Map.include({
 					};
 				},
 				tags: true,
-				sorter: function(data) { return data.sort(function(a, b) {
-					return parseFloat(a.text) - parseFloat(b.text);
-				});}
+				sorter: function (data) {
+					return data.sort(function (a, b) {
+						return parseFloat(a.text) - parseFloat(b.text);
+					});
+				}
 			});
 		}
 
@@ -146,7 +155,7 @@ L.Map.include({
 		}
 		fontsizecombobox.off('select2:select', this.onFontSizeSelect.bind(this)).on('select2:select', this.onFontSizeSelect.bind(this));
 
-		var onCommandStateChanged = function(e) {
+		var onCommandStateChanged = function (e) {
 			var commandName = e.commandName;
 
 			if (commandName !== '.uno:FontHeight')
@@ -185,7 +194,7 @@ L.Map.include({
 		if (this.isEditMode()) {
 			var msg = 'uno .uno:CharFontName {' +
 				'"CharFontName.FamilyName": ' +
-					'{"type": "string", "value": "' + fontName + '"}}';
+				'{"type": "string", "value": "' + fontName + '"}}';
 			app.socket.sendMessage(msg);
 		}
 	},
@@ -231,7 +240,7 @@ L.Map.include({
 		// comments are irrelevant, too
 		if (id === 'print' && format === 'pdf' && options === '')
 			options = '{\"ExportFormFields\":{\"type\":\"boolean\",\"value\":\"false\"},' +
-						'\"ExportNotes\":{\"type\":\"boolean\",\"value\":\"false\"}}';
+				'\"ExportNotes\":{\"type\":\"boolean\",\"value\":\"false\"}}';
 
 		// download: don't export comments into PDF by default
 		if (id == 'export' && format === 'pdf' && options === '')
@@ -292,36 +301,36 @@ L.Map.include({
 
 	applyStyle: function (style, familyName) {
 		if (!style || !familyName) {
-			this.fire('error', {cmd: 'setStyle', kind: 'incorrectparam'});
+			this.fire('error', { cmd: 'setStyle', kind: 'incorrectparam' });
 			return;
 		}
 		if (this.isEditMode()) {
 			var msg = 'uno .uno:StyleApply {' +
-					'"Style":{"type":"string", "value": "' + style + '"},' +
-					'"FamilyName":{"type":"string", "value":"' + familyName + '"}' +
-					'}';
+				'"Style":{"type":"string", "value": "' + style + '"},' +
+				'"FamilyName":{"type":"string", "value":"' + familyName + '"}' +
+				'}';
 			app.socket.sendMessage(msg);
 		}
 	},
 
 	applyLayout: function (layout) {
 		if (!layout) {
-			this.fire('error', {cmd: 'setLayout', kind: 'incorrectparam'});
+			this.fire('error', { cmd: 'setLayout', kind: 'incorrectparam' });
 			return;
 		}
 		if (this.isEditMode()) {
 			var msg = 'uno .uno:AssignLayout {' +
-					'"WhatPage":{"type":"unsigned short", "value": "' + this.getCurrentPartNumber() + '"},' +
-					'"WhatLayout":{"type":"unsigned short", "value": "' + layout + '"}' +
-					'}';
+				'"WhatPage":{"type":"unsigned short", "value": "' + this.getCurrentPartNumber() + '"},' +
+				'"WhatLayout":{"type":"unsigned short", "value": "' + layout + '"}' +
+				'}';
 			app.socket.sendMessage(msg);
 		}
 	},
 
-	save: function(dontTerminateEdit, dontSaveIfUnmodified, extendedData) {
+	save: function (dontTerminateEdit, dontSaveIfUnmodified, extendedData) {
 		var msg = 'save' +
-					' dontTerminateEdit=' + (dontTerminateEdit ? 1 : 0) +
-					' dontSaveIfUnmodified=' + (dontSaveIfUnmodified ? 1 : 0);
+			' dontTerminateEdit=' + (dontTerminateEdit ? 1 : 0) +
+			' dontSaveIfUnmodified=' + (dontSaveIfUnmodified ? 1 : 0);
 
 		if (extendedData !== undefined) {
 			msg += ' extendedData=' + extendedData;
@@ -330,7 +339,7 @@ L.Map.include({
 		app.socket.sendMessage(msg);
 	},
 
-	messageNeedsToBeRedirected: function(command) {
+	messageNeedsToBeRedirected: function (command) {
 		if (command === '.uno:EditHyperlink') {
 			var that = this;
 			setTimeout(function () { that.showHyperlinkDialog(); }, 500);
@@ -369,7 +378,7 @@ L.Map.include({
 			'.uno:Signature', '.uno:ShowResolvedAnnotations',
 			'.uno:ToolbarMode?Mode:string=notebookbar_online.ui', '.uno:ToolbarMode?Mode:string=Default'];
 		if (this.isPermissionEditForComments()) {
-			allowedCommands.push('.uno:InsertAnnotation','.uno:DeleteCommentThread', '.uno:DeleteAnnotation', '.uno:DeleteNote',
+			allowedCommands.push('.uno:InsertAnnotation', '.uno:DeleteCommentThread', '.uno:DeleteAnnotation', '.uno:DeleteNote',
 				'.uno:DeleteComment', '.uno:ReplyComment', '.uno:ReplyToAnnotation', '.uno:ResolveComment',
 				'.uno:ResolveCommentThread', '.uno:ResolveComment', '.uno:EditAnnotation', '.uno:ExportToEPUB', '.uno:ExportToPDF',
 				'.uno:ExportDirectToPDF');
@@ -387,7 +396,7 @@ L.Map.include({
 
 			// proceed if the toggle button is pressed
 			if (val && (json === undefined || json === null)) {
-				 // because it is toggle, state has to be the opposite
+				// because it is toggle, state has to be the opposite
 				var state = !(val === 'true');
 				if (window.isLocalStorageAllowed)
 					window.localStorage.setItem('SpellOnline', state);
@@ -416,44 +425,44 @@ L.Map.include({
 	},
 
 	insertFile: function (file) {
-		this.fire('insertfile', {file: file});
+		this.fire('insertfile', { file: file });
 	},
 
 	insertURL: function (url) {
-		this.fire('inserturl', {url: url});
+		this.fire('inserturl', { url: url });
 	},
 
 	selectBackground: function (file) {
-		this.fire('selectbackground', {file: file});
+		this.fire('selectbackground', { file: file });
 	},
 
-	onHelpOpen: function(id, map, productName) {
+	onHelpOpen: function (id, map, productName) {
 		var i;
 		// Display keyboard shortcut or online help
 		if (id === 'keyboard-shortcuts') {
-			document.getElementById('online-help').style.display='none';
+			document.getElementById('online-help').style.display = 'none';
 			// Display help according to document opened
 			if (map.getDocType() === 'text') {
-				document.getElementById('text-shortcuts').style.display='block';
+				document.getElementById('text-shortcuts').style.display = 'block';
 			}
 			else if (map.getDocType() === 'spreadsheet') {
-				document.getElementById('spreadsheet-shortcuts').style.display='block';
+				document.getElementById('spreadsheet-shortcuts').style.display = 'block';
 			}
 			else if (map.getDocType() === 'presentation') {
-				document.getElementById('presentation-shortcuts').style.display='block';
+				document.getElementById('presentation-shortcuts').style.display = 'block';
 			}
 			else if (map.getDocType() === 'drawing') {
-				document.getElementById('drawing-shortcuts').style.display='block';
+				document.getElementById('drawing-shortcuts').style.display = 'block';
 			}
 		} else /* id === 'online-help' */ {
-			document.getElementById('keyboard-shortcuts').style.display='none';
+			document.getElementById('keyboard-shortcuts').style.display = 'none';
 			if (window.socketProxy) {
 				var helpdiv = document.getElementById('online-help');
 				var imgList = helpdiv.querySelectorAll('img');
 				for (var p = 0; p < imgList.length; p++) {
 					var imgSrc = imgList[p].src;
 					imgSrc = imgSrc.substring(imgSrc.indexOf('/images'));
-					imgList[p].src = window.makeWsUrl('/browser/dist'+ imgSrc);
+					imgList[p].src = window.makeWsUrl('/browser/dist' + imgSrc);
 				}
 			}
 			// Display help according to document opened
@@ -503,7 +512,7 @@ L.Map.include({
 			var trans = translatableContent[i].innerHTML.toLocaleString();
 			// Try harder to get translation of keyboard shortcuts (html2po trims starting <kbd> and ending </kbd>)
 			if (orig === trans && orig.indexOf('kbd') != -1) {
-				var trimmedOrig = orig.replace(/^(<kbd>)/,'').replace(/(<\/kbd>$)/,'');
+				var trimmedOrig = orig.replace(/^(<kbd>)/, '').replace(/(<\/kbd>$)/, '');
 				var trimmedTrans = trimmedOrig.toLocaleString();
 				if (trimmedOrig !== trimmedTrans) {
 					trans = '<kbd>' + trimmedTrans + '</kbd>';
@@ -526,7 +535,7 @@ L.Map.include({
 		if (supportedLanguage.indexOf(currentLanguage) >= 0) {
 			translatableContent = $(contentElement.querySelectorAll('.screenshot')).querySelectorAll('img');
 			for (i = 0, max = translatableContent.length; i < max; i++) {
-				translatableContent[i].src = translatableContent[i].src.replace('/en/', '/'+currentLanguage+'/');
+				translatableContent[i].src = translatableContent[i].src.replace('/en/', '/' + currentLanguage + '/');
 			}
 		}
 
@@ -543,7 +552,7 @@ L.Map.include({
 		}
 	},
 
-	_doOpenHelpFile: function(data, id, map) {
+	_doOpenHelpFile: function (data, id, map) {
 		var productName;
 		if (window.ThisIsAMobileApp) {
 			productName = window.MobileAppName;
@@ -560,7 +569,7 @@ L.Map.include({
 		this.onHelpOpen(id, map, productName);
 	},
 
-	showHelp: function(id) {
+	showHelp: function (id) {
 		var map = this;
 		if (window.ThisIsAMobileApp) {
 			map._doOpenHelpFile(window.HelpFile, id, map);
@@ -569,12 +578,12 @@ L.Map.include({
 		var helpLocation = 'cool-help.html';
 		if (window.socketProxy)
 			helpLocation = window.makeWsUrl('/browser/dist/' + helpLocation);
-		$.get(helpLocation, function(data) {
+		$.get(helpLocation, function (data) {
 			map._doOpenHelpFile(data, id, map);
 		});
 	},
 
-	aboutDialogKeyHandler: function(event) {
+	aboutDialogKeyHandler: function (event) {
 		if (event.key === 'd') {
 			this._docLayer.toggleTileDebugMode();
 		} else if (event.key === 'l') {
@@ -607,12 +616,12 @@ L.Map.include({
 		}
 	},
 
-	aboutDialogClickHandler: function(event) {
+	aboutDialogClickHandler: function (event) {
 		if (event.detail === 3)
 			this._docLayer.toggleTileDebugMode();
 	},
 
-	showLOAboutDialog: function() {
+	showLOAboutDialog: function () {
 		// Just as a test to exercise the Async Trace Event functionality, uncomment this
 		// line and the asyncTraceEvent.finish() below.
 		// var asyncTraceEvent = app.socket.createAsyncTraceEvent('cool-showLOAboutDialog');
@@ -638,7 +647,7 @@ L.Map.include({
 		var productNameWithURL;
 		if (!window.ThisIsAMobileApp)
 			productNameWithURL = '<a href="' + sanitizeUrl(productURL) +
-								 '" target="_blank">' + productName + '</a>';
+				'" target="_blank">' + productName + '</a>';
 		else
 			productNameWithURL = productName;
 
@@ -668,7 +677,7 @@ L.Map.include({
 		copyversion.setAttribute('title', _('Copy all version information in English'));
 		var img = L.DomUtil.create('img', null, null);
 		L.LOUtil.setImage(img, 'lc_copy.svg', this._docLayer._docType);
-		copyversion.innerHTML = '<img src="' + img.src +'" width="18px" height="18px">';
+		copyversion.innerHTML = '<img src="' + img.src + '" width="18px" height="18px">';
 		copyversion.addEventListener('click', this.copyVersionInfoToClipboard.bind(this));
 		map.uiManager.enableTooltip(copyversion);
 		var aboutok = document.getElementById('modal-dialog-about-dialog-box-yesbutton');
@@ -677,19 +686,19 @@ L.Map.include({
 		}
 	},
 
-	getVersionInfoFromClass: function(className) {
+	getVersionInfoFromClass: function (className) {
 		var versionElement = document.getElementById(className);
 		var versionInfo = versionElement.innerText;
 
 		var gitHashIndex = versionInfo.indexOf('git hash');
 		if (gitHashIndex > -1) {
-		  versionInfo = versionInfo.slice(0, gitHashIndex) + '(' + versionInfo.slice(gitHashIndex) + ')';
+			versionInfo = versionInfo.slice(0, gitHashIndex) + '(' + versionInfo.slice(gitHashIndex) + ')';
 		}
 
 		return versionInfo;
 	},
 
-	copyVersionInfoToClipboard: function() {
+	copyVersionInfoToClipboard: function () {
 		var text = 'COOLWSD version: ' + this.getVersionInfoFromClass('coolwsd-version') + '\n';
 		text += 'LOKit version: ' + this.getVersionInfoFromClass('lokit-version') + '\n';
 		text += 'Served by: ' + document.getElementById('os-info').innerText + '\n';
@@ -697,13 +706,13 @@ L.Map.include({
 
 		if (navigator.clipboard && window.isSecureContext) {
 			navigator.clipboard.writeText(text)
-			.then(function() {
-				window.console.log('Text copied to clipboard');
-				this.contentHasBeenCopiedShowSnackbar();
-			}.bind(this))
-			.catch(function(error) {
-				window.console.error('Error copying text to clipboard:', error);
-			});
+				.then(function () {
+					window.console.log('Text copied to clipboard');
+					this.contentHasBeenCopiedShowSnackbar();
+				}.bind(this))
+				.catch(function (error) {
+					window.console.error('Error copying text to clipboard:', error);
+				});
 		} else {
 			var textArea = document.createElement('textarea');
 			textArea.style.position = 'absolute';
@@ -723,7 +732,7 @@ L.Map.include({
 		}
 	},
 
-	contentHasBeenCopiedShowSnackbar: function() {
+	contentHasBeenCopiedShowSnackbar: function () {
 		var timeout = 1000;
 		this.uiManager.showSnackbar('Version information has been copied', null, null, timeout);
 		var copybutton = document.querySelector('#modal-dialog-about-dialog-box-copybutton > img');
@@ -733,19 +742,19 @@ L.Map.include({
 		}.bind(this), timeout);
 	},
 
-	extractContent: function(html) {
+	extractContent: function (html) {
 		var parser = new DOMParser;
 		return parser.parseFromString(html, 'text/html').documentElement.getElementsByTagName('body')[0].textContent;
 	},
 
-	makeURLFromStr: function(str) {
+	makeURLFromStr: function (str) {
 		if (!(str.toLowerCase().startsWith('http://') || str.toLowerCase().startsWith('https://'))) {
 			str = 'http://' + str;
 		}
 		return str;
 	},
 
-	_createAndRunHyperlinkDialog: function(defaultText, defaultLink) {
+	_createAndRunHyperlinkDialog: function (defaultText, defaultLink) {
 		var map = this;
 		var id = 'hyperlink';
 		var title = _('Insert hyperlink');
@@ -798,33 +807,35 @@ L.Map.include({
 		], 'hyperlink-link-box');
 
 		map.uiManager.showModal(json, [
-			{id: 'response-ok', func: function() {
-				var text = document.getElementById('hyperlink-text-box');
-				var link = document.getElementById('hyperlink-link-box');
+			{
+				id: 'response-ok', func: function () {
+					var text = document.getElementById('hyperlink-text-box');
+					var link = document.getElementById('hyperlink-link-box');
 
-				if (link.value != '') {
-					if (!text.value || text.value === '')
-						text.value = link.value;
+					if (link.value != '') {
+						if (!text.value || text.value === '')
+							text.value = link.value;
 
-					var command = {
-						'Hyperlink.Text': {
-							type: 'string',
-							value: text.value
-						},
-						'Hyperlink.URL': {
-							type: 'string',
-							value: map.makeURLFromStr(link.value)
-						}
-					};
-					map.sendUnoCommand('.uno:SetHyperlink', command, true);
+						var command = {
+							'Hyperlink.Text': {
+								type: 'string',
+								value: text.value
+							},
+							'Hyperlink.URL': {
+								type: 'string',
+								value: map.makeURLFromStr(link.value)
+							}
+						};
+						map.sendUnoCommand('.uno:SetHyperlink', command, true);
+					}
+
+					map.uiManager.closeModal(dialogId);
 				}
-
-				map.uiManager.closeModal(dialogId);
-			}}
+			}
 		]);
 	},
 
-	getTextForLink: function() {
+	getTextForLink: function () {
 		var map = this;
 		var text = '';
 		if (this.hyperlinkUnderCursor && this.hyperlinkUnderCursor.text) {
@@ -839,7 +850,7 @@ L.Map.include({
 		return text;
 	},
 
-	showHyperlinkDialog: function() {
+	showHyperlinkDialog: function () {
 		var text = this.getTextForLink();
 		var link = '';
 		if (this.hyperlinkUnderCursor && this.hyperlinkUnderCursor.link)
@@ -852,33 +863,33 @@ L.Map.include({
 		var map = this;
 		// if we are being loaded inside an iframe, ask
 		// our host to show revision history mode
-		map.fire('postMessage', {msgId: 'rev-history', args: {Deprecated: true}});
-		map.fire('postMessage', {msgId: 'UI_FileVersions'});
+		map.fire('postMessage', { msgId: 'rev-history', args: { Deprecated: true } });
+		map.fire('postMessage', { msgId: 'UI_FileVersions' });
 	},
 	openShare: function () {
 		var map = this;
-		map.fire('postMessage', {msgId: 'UI_Share'});
+		map.fire('postMessage', { msgId: 'UI_Share' });
 	},
 	openSaveAs: function (format) {
 		var map = this;
-		map.fire('postMessage', {msgId: 'UI_SaveAs', args: {format: format}});
+		map.fire('postMessage', { msgId: 'UI_SaveAs', args: { format: format } });
 	},
 
-	formulabarBlur: function() {
+	formulabarBlur: function () {
 		if (!this.uiManager.isAnyDialogOpen())
 			this.focus();
 	},
 
-	formulabarFocus: function() {
+	formulabarFocus: function () {
 		this.formulabar.focus();
 	},
 
-	formulabarSetDirty: function() {
+	formulabarSetDirty: function () {
 		if (this.formulabar)
 			this.formulabar.dirty = true;
 	},
 
-	setAccessibilityState: function(enable) {
+	setAccessibilityState: function (enable) {
 		if (this._accessibilityState === enable)
 			return;
 		this._accessibilityState = enable;
@@ -894,7 +905,7 @@ L.Map.include({
 	},
 
 	// map.dispatch() will be used to call some actions so we can share the code
-	dispatch: function(action) {
+	dispatch: function (action) {
 		// Don't allow to execute new actions while any dialog is visible.
 		// It prevents launching multiple instances of the same dialog.
 		if (this.dialog.hasOpenedDialog() || (this.jsdialog && this.jsdialog.hasDialogOpened())) {
@@ -921,161 +932,161 @@ L.Map.include({
 		}
 
 		switch (action) {
-		case 'acceptformula':
-			{
-				if (window.mode.isMobile()) {
-					this.focus();
-					this._docLayer.postKeyboardEvent('input',
-						this.keyboard.keyCodes.enter,
-						this.keyboard._toUNOKeyCode(this.keyboard.keyCodes.enter));
-				} else {
-					this.sendUnoCommand('.uno:AcceptFormula');
-				}
+			case 'acceptformula':
+				{
+					if (window.mode.isMobile()) {
+						this.focus();
+						this._docLayer.postKeyboardEvent('input',
+							this.keyboard.keyCodes.enter,
+							this.keyboard._toUNOKeyCode(this.keyboard.keyCodes.enter));
+					} else {
+						this.sendUnoCommand('.uno:AcceptFormula');
+					}
 
-				this.onFormulaBarBlur();
-				this.formulabarBlur();
-				this.formulabarSetDirty();
-			}
-			break;
-		case 'cancelformula':
-			{
-				this.sendUnoCommand('.uno:Cancel');
-				this.onFormulaBarBlur();
-				this.formulabarBlur();
-				this.formulabarSetDirty();
-			}
-			break;
-		case 'startformula':
-			{
-				this.sendUnoCommand('.uno:StartFormula');
-				this.onFormulaBarFocus();
-				this.formulabarFocus();
-				this.formulabarSetDirty();
-			}
-			break;
-		case 'functiondialog':
-			{
-				if (window.mode.isMobile() && this._functionWizardData) {
-					this._docLayer._closeMobileWizard();
-					this._docLayer._openMobileWizard(this._functionWizardData);
+					this.onFormulaBarBlur();
+					this.formulabarBlur();
 					this.formulabarSetDirty();
-				} else {
-					this.sendUnoCommand('.uno:FunctionDialog');
 				}
-			}
-			break;
-		case 'remotelink':
-			this.fire('postMessage', { msgId: 'UI_PickLink' });
-			break;
-		case 'zoteroaddeditcitation':
-			{
-				this.zotero.handleItemList();
-			}
-			break;
-		case 'zoterosetdocprefs':
-			{
-				this.zotero.handleStyleList();
-			}
-			break;
-		case 'zoteroaddeditbibliography':
-			{
-				this.zotero.insertBibliography();
-			}
-			break;
-		case 'zoteroaddnote':
-			{
-				this.zotero.handleInsertNote();
-			}
-			break;
-		case 'zoterorefresh':
-			{
-				this.zotero.refreshCitationsAndBib();
-			}
-			break;
-		case 'zoterounlink':
-			{
-				this.zotero.unlinkCitations();
-			}
-			break;
-		case 'exportpdf':
-			{
-				this.sendUnoCommand('.uno:ExportToPDF', {
-					'SynchronMode': {
-						'type': 'boolean',
-						'value': false
-					}
-				});
-			}
-			break;
-		case 'exportdirectpdf':
-			{
-				this.sendUnoCommand('.uno:ExportDirectToPDF', {
-					'SynchronMode': {
-						'type': 'boolean',
-						'value': false
-					}
-				});
-			}
-			break;
-		case 'exportepub':
-			{
-				this.sendUnoCommand('.uno:ExportToEPUB', {
-					'SynchronMode': {
-						'type': 'boolean',
-						'value': false
-					}
-				});
-			}
-			break;
-		case 'deletepage':
-			{
-				var map = this;
-				var msg;
-				if (map.getDocType() === 'presentation') {
-					msg = _('Are you sure you want to delete this slide?');
+				break;
+			case 'cancelformula':
+				{
+					this.sendUnoCommand('.uno:Cancel');
+					this.onFormulaBarBlur();
+					this.formulabarBlur();
+					this.formulabarSetDirty();
 				}
-				else { /* drawing */
-					msg = _('Are you sure you want to delete this page?');
+				break;
+			case 'startformula':
+				{
+					this.sendUnoCommand('.uno:StartFormula');
+					this.onFormulaBarFocus();
+					this.formulabarFocus();
+					this.formulabarSetDirty();
 				}
-				map.uiManager.showInfoModal('deleteslide-modal', _('Delete'),
-					msg, '', _('OK'), function () { map.deletePage(); }, true, 'deleteslide-modal-response');
-			}
-			break;
-		case 'hyperlinkdialog':
-			this.showHyperlinkDialog();
-			break;
-		case 'rev-history':
-			this.openRevisionHistory();
-			break;
-		case 'shareas':
-			this.openShare();
-			break;
-		case 'presentation':
-			this.fire('fullscreen');
-			break;
-		case 'charmapcontrol':
-			this.sendUnoCommand('.uno:InsertSymbol');
-			break;
-		case 'closetablet':
-			this.uiManager.enterReadonlyOrClose();
-			break;
-		case 'showresolvedannotations':
-			var items = this['stateChangeHandler'];
-			var val = items.getItemValue('.uno:ShowResolvedAnnotations');
-			val = (val === 'true' || val === true);
-			this.showResolvedComments(!val);
-			break;
-		case 'toggledarktheme':
-			this.uiManager.toggleDarkMode();
-			break;
-		case 'home-search':
-			this.uiManager.focusSearch();
-			break;
-		case 'renamedocument':
-			this.uiManager.renameDocument();
-			break;
-		default:
-			console.error('unknown dispatch: "' + action + '"');
+				break;
+			case 'functiondialog':
+				{
+					if (window.mode.isMobile() && this._functionWizardData) {
+						this._docLayer._closeMobileWizard();
+						this._docLayer._openMobileWizard(this._functionWizardData);
+						this.formulabarSetDirty();
+					} else {
+						this.sendUnoCommand('.uno:FunctionDialog');
+					}
+				}
+				break;
+			case 'remotelink':
+				this.fire('postMessage', { msgId: 'UI_PickLink' });
+				break;
+			case 'zoteroaddeditcitation':
+				{
+					this.zotero.handleItemList();
+				}
+				break;
+			case 'zoterosetdocprefs':
+				{
+					this.zotero.handleStyleList();
+				}
+				break;
+			case 'zoteroaddeditbibliography':
+				{
+					this.zotero.insertBibliography();
+				}
+				break;
+			case 'zoteroaddnote':
+				{
+					this.zotero.handleInsertNote();
+				}
+				break;
+			case 'zoterorefresh':
+				{
+					this.zotero.refreshCitationsAndBib();
+				}
+				break;
+			case 'zoterounlink':
+				{
+					this.zotero.unlinkCitations();
+				}
+				break;
+			case 'exportpdf':
+				{
+					this.sendUnoCommand('.uno:ExportToPDF', {
+						'SynchronMode': {
+							'type': 'boolean',
+							'value': false
+						}
+					});
+				}
+				break;
+			case 'exportdirectpdf':
+				{
+					this.sendUnoCommand('.uno:ExportDirectToPDF', {
+						'SynchronMode': {
+							'type': 'boolean',
+							'value': false
+						}
+					});
+				}
+				break;
+			case 'exportepub':
+				{
+					this.sendUnoCommand('.uno:ExportToEPUB', {
+						'SynchronMode': {
+							'type': 'boolean',
+							'value': false
+						}
+					});
+				}
+				break;
+			case 'deletepage':
+				{
+					var map = this;
+					var msg;
+					if (map.getDocType() === 'presentation') {
+						msg = _('Are you sure you want to delete this slide?');
+					}
+					else { /* drawing */
+						msg = _('Are you sure you want to delete this page?');
+					}
+					map.uiManager.showInfoModal('deleteslide-modal', _('Delete'),
+						msg, '', _('OK'), function () { map.deletePage(); }, true, 'deleteslide-modal-response');
+				}
+				break;
+			case 'hyperlinkdialog':
+				this.showHyperlinkDialog();
+				break;
+			case 'rev-history':
+				this.openRevisionHistory();
+				break;
+			case 'shareas':
+				this.openShare();
+				break;
+			case 'presentation':
+				this.fire('fullscreen');
+				break;
+			case 'charmapcontrol':
+				this.sendUnoCommand('.uno:InsertSymbol');
+				break;
+			case 'closetablet':
+				this.uiManager.enterReadonlyOrClose();
+				break;
+			case 'showresolvedannotations':
+				var items = this['stateChangeHandler'];
+				var val = items.getItemValue('.uno:ShowResolvedAnnotations');
+				val = (val === 'true' || val === true);
+				this.showResolvedComments(!val);
+				break;
+			case 'toggledarktheme':
+				this.uiManager.toggleDarkMode();
+				break;
+			case 'home-search':
+				this.uiManager.focusSearch();
+				break;
+			case 'renamedocument':
+				this.uiManager.renameDocument();
+				break;
+			default:
+				console.error('unknown dispatch: "' + action + '"');
 		}
 	},
 });

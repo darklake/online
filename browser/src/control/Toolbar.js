@@ -52,20 +52,17 @@ L.Map.include({
 			var data = []; // reset data in order to avoid that the font select box is populated with styles, too.
 			// Old browsers like IE11 et al don't like Object.keys with
 			// empty arguments
-			console.log('KR, typeof commandValues : ', typeof commandValues);
 			if (typeof commandValues === 'object') {
 				data = data.concat(Object.keys(commandValues));
 			}
-			console.log('KR, font, data : ', data);
-			console.log('KR, font, data.length : ', data.length);
+			
 			fontcombobox.empty();
 			for (var i = 0; i < data.length; ++i) {
 				if (!data[i]) continue;
 				var option = document.createElement('option');
-				console.log('KR, option : ', option);
 				option.text = data[i];
 				option.value = data[i];
-				fontcombobox.append(data[i]);
+				fontcombobox.append(option);
 			}
 			fontcombobox.on('select2:select', that.onFontSelect.bind(that));
 

@@ -62,6 +62,7 @@ L.Map.include({
 			for (var i = 0; i < data.length && i < 10; ++i) {
 				if (!data[i]) continue;
 				var option = document.createElement('option');
+				console.log('KR, option : ', option);
 				option.text = data[i];
 				option.value = data[i];
 				fontcombobox.append(option);

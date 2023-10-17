@@ -37,7 +37,6 @@ L.Map.include({
 	},
 
 	createFontSelector: function(nodeSelector) {
-		return;
 		var that = this;
 
 		var fontcombobox = $(nodeSelector);
@@ -73,7 +72,7 @@ L.Map.include({
 			fontcombobox.val(that._getCurrentFontName()).trigger('change');
 		};
 
-		createSelector();
+		//createSelector();
 
 		var onCommandStateChanged = function(e) {
 			var commandName = e.commandName;

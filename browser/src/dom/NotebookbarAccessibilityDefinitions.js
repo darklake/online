@@ -49,6 +49,7 @@ var NotebookbarAccessibilityDefinitions = function() {
 			return;
 		else {
 			for (var i = 0; i < tabs.length; i++) {
+				console.log('tabs[i].id : ', tabs[i].id);
 				var tabName = tabs[i].id.split('-')[0];
 				tabs[i].rawContentList = [];
 

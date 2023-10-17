@@ -3486,7 +3486,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		var focusedElementInDialog = focusedElement ? container.querySelector('[id=\'' + focusedElement.id + '\']') : null;
 		var focusedId = focusedElementInDialog ? focusedElementInDialog.id : null;
 
-		control.style.visibility = 'hidden';
+		//control.style.visibility = 'hidden';
 
 		var temporaryParent = L.DomUtil.create('div');
 		buildFunc.bind(this)(temporaryParent, [data], false);

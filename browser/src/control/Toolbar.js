@@ -47,32 +47,54 @@ L.Map.include({
 		}
 
 		var createSelector = function() {
-			var commandValues = that.getToolbarCommandValues('.uno:CharFontName');
+			console.log('KR, start create');
+			setTimeout(function() {
+				var commandValues = that.getToolbarCommandValues('.uno:CharFontName');
 
-			var data = []; // reset data in order to avoid that the font select box is populated with styles, too.
-			// Old browsers like IE11 et al don't like Object.keys with
-			// empty arguments
-			console.log('KR, typeof commandValues : ', typeof commandValues);
-			if (typeof commandValues === 'object') {
-				data = data.concat(Object.keys(commandValues));
-			}
-			console.log('KR, font, data : ', data);
-			console.log('KR, font, data.length : ', data.length);
-			fontcombobox.empty();
-			for (var i = 0; i < data.length; ++i) {
-				if (!data[i]) continue;
-				var option = document.createElement('option');
-				console.log('KR, option : ', option);
-				option.text = data[i];
-				option.value = data[i];
-				fontcombobox.append(data[i]);
-			}
-			fontcombobox.on('select2:select', that.onFontSelect.bind(that));
+				var data = []; // reset data in order to avoid that the font select box is populated with styles, too.
+				// Old browsers like IE11 et al don't like Object.keys with
+				// empty arguments
+				if (typeof commandValues === 'object') {
+					data = data.concat(Object.keys(commandValues));
 
-			fontcombobox.val(that._getCurrentFontName()).trigger('change');
+				}
+				setTimeout(function() {
+					console.log('KR, start empty');
+					fontcombobox.empty();
+
+					setTimeout(function() {
+						console.log('KR, start append');
+
+						for (var i = 0; i < data.length; ++i) {
+							if (!data[i]) continue;
+							var option = document.createElement('option');
+							console.log('KR, option : ', option);
+							option.text = data[i];
+							option.value = data[i];
+							fontcombobox.append(data[i]);
+						}
+
+						setTimeout(function() {
+							console.log('KR, start select');
+
+							fontcombobox.on('select2:select', that.onFontSelect.bind(that));
+			
+							setTimeout(function() {
+								console.log('KR, start change');
+								fontcombobox.val(that._getCurrentFontName()).trigger('change');
+							}, 2000);
+							
+						}, 2000);
+						
+					}, 2000);
+					
+				}, 2000);
+				
+			}, 2000);
+			
 		};
 
-		//createSelector();
+		createSelector();
 
 		var onCommandStateChanged = function(e) {
 			var commandName = e.commandName;

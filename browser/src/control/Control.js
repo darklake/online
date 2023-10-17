@@ -90,11 +90,11 @@ L.control = function (options) {
 };
 
 L.useHelp = function () {
-	return false;
+	return true;
 };
 
 L.useRename = function () {
-	return false;
+	return true;
 };
 
 

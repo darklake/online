@@ -534,12 +534,14 @@ L.Control.JSDialogBuilder = L.Control.extend({
 		if (data.step != undefined) {
 			// we don't want to show error popups due to browser step validation
 			// so be sure all the values will be acceptted, check only precision
+			/*	// KRCHOI 모든 undefined step 에는 1 적용. 0.0001이 뭐야 대체.. 
 			var step = getPrecision(data.step);
 			var value = data.value ? getPrecision(data.value) : 1;
 			var minStep = getPrecision(data.min);
 			var maxStep = getPrecision(data.max);
 
-			//step = Math.min(step, value, minStep, maxStep);
+			step = Math.min(step, value, minStep, maxStep);
+			*/
 			step = 1;
 
 			$(spinfield).attr('step', step);

@@ -50,13 +50,15 @@ var NotebookbarAccessibilityDefinitions = function() {
 		else {
 			for (var i = 0; i < tabs.length; i++) {
 				console.log('tabs[i].id : ', tabs[i].id);
-				var tabName = tabs[i].id.split('-')[0];
-				tabs[i].rawContentList = [];
-
-				for (var j = 0; j < contextContainer.children.length; j++) {
-					if (contextContainer.children[j].children[0].id === tabName + '-container') {
-						tabs[i].rawContentList = contextContainer.children[j].children[0].children;
-						break;
+				if (tabs[i].id) {
+					var tabName = tabs[i].id.split('-')[0];
+					tabs[i].rawContentList = [];
+	
+					for (var j = 0; j < contextContainer.children.length; j++) {
+						if (contextContainer.children[j].children[0].id === tabName + '-container') {
+							tabs[i].rawContentList = contextContainer.children[j].children[0].children;
+							break;
+						}
 					}
 				}
 			}

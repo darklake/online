@@ -782,5 +782,9 @@
 "Center ~X:":"X 축:",
 "Center X:":"X 축:",
 "Center ~Y:":"Y 축:",
-"Center Y:":"Y 축:"
+"Center Y:":"Y 축:",
+"N~one":"없음",
+"Recen~t":"최근",
+"Trans~parency:":"투명도",
+"Edit O~bject":"수정"
 }

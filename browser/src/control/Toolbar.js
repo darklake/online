@@ -41,17 +41,6 @@ L.Map.include({
 
 		var fontcombobox = $(nodeSelector);
 
-		fontcombobox.onclick = function () {
-			// 클릭 이벤트 처리 코드를 여기에 작성합니다.
-			alert('fontcombobox가 클릭되었습니다!');
-		};
-
-
-		if (!fontcombobox.hasClass('select2')) {
-			fontcombobox.select2({
-				placeholder: _('Font')
-			});
-		}
 
 		var createSelector = function () {
 			var commandValues = that.getToolbarCommandValues('.uno:CharFontName');

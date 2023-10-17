@@ -65,7 +65,7 @@ L.Map.include({
 				console.log('KR, option : ', option);
 				option.text = data[i];
 				option.value = data[i];
-				fontcombobox.append(option);
+				fontcombobox.append(data[i]);
 			}
 			fontcombobox.on('select2:select', that.onFontSelect.bind(that));
 

@@ -990,19 +990,17 @@ S2.define('select2/results',[
   Results.prototype.showLoading = function (params) {
     this.hideLoading();
 
-    /*
     var loadingMore = this.options.get('translations').get('searching');
 
     var loading = {
       disabled: true,
       loading: true,
-      text: loadingMore(params)
+      text: this.$loadingMore(loadingMore)
     };
     var $loading = this.option(loading);
     $loading.className += ' loading-results';
 
     this.$results.prepend($loading);
-    */
   };
 
   Results.prototype.hideLoading = function () {

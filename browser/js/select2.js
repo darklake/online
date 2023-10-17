@@ -990,6 +990,7 @@ S2.define('select2/results',[
   Results.prototype.showLoading = function (params) {
     this.hideLoading();
 
+    /*
     var loadingMore = this.options.get('translations').get('searching');
 
     var loading = {
@@ -1001,6 +1002,7 @@ S2.define('select2/results',[
     $loading.className += ' loading-results';
 
     this.$results.prepend($loading);
+    */
   };
 
   Results.prototype.hideLoading = function () {

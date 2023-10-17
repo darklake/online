@@ -66,7 +66,7 @@ L.Map.include({
 			}
 			fontcombobox.on('select2:select', that.onFontSelect.bind(that));
 
-			//fontcombobox.val(that._getCurrentFontName()).trigger('change');
+			fontcombobox.val(that._getCurrentFontName()).trigger('change');
 		};
 
 		createSelector();

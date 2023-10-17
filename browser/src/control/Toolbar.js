@@ -43,7 +43,7 @@ L.Map.include({
 
 		fontcombobox.onclick = function () {
 			// 클릭 이벤트 처리 코드를 여기에 작성합니다.
-			alert("fontcombobox가 클릭되었습니다!");
+			alert('fontcombobox가 클릭되었습니다!');
 		};
 
 

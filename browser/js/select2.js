@@ -995,7 +995,7 @@ S2.define('select2/results',[
     var loading = {
       disabled: true,
       loading: true,
-      text: this.$loadingMore(loadingMore)
+      text: loadingMore
     };
     var $loading = this.option(loading);
     $loading.className += ' loading-results';

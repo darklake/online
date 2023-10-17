@@ -37,6 +37,7 @@ L.Map.include({
 	},
 
 	createFontSelector: function(nodeSelector) {
+		return;
 		var that = this;
 
 		var fontcombobox = $(nodeSelector);
@@ -67,7 +68,7 @@ L.Map.include({
 				option.value = data[i];
 				fontcombobox.append(data[i]);
 			}
-			//fontcombobox.on('select2:select', that.onFontSelect.bind(that));
+			fontcombobox.on('select2:select', that.onFontSelect.bind(that));
 
 			fontcombobox.val(that._getCurrentFontName()).trigger('change');
 		};

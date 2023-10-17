@@ -3477,8 +3477,11 @@ L.Control.JSDialogBuilder = L.Control.extend({
 			return;
 		}
 
-		return;
-		
+		var a = 1;
+		if (a === 1) {
+			return;
+		}
+
 		var parent = control.parentNode;
 		if (!parent)
 			return;

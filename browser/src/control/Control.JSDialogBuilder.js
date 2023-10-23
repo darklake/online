@@ -542,7 +542,7 @@ L.Control.JSDialogBuilder = L.Control.extend({
 
 			step = Math.min(step, value, minStep, maxStep);
 			// KRCHOI 모든 undefined step 에는 1 적용. 0.0001이 뭐야 대체.. 타입/펑션 체크때문에 주석처리는 하지 않음.
-			step = 1;
+			//step = 1;
 			$(spinfield).attr('step', step);
 		}
 

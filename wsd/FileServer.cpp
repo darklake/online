@@ -1105,7 +1105,7 @@ void FileServerRequestHandler::preprocessFile(const HTTPRequest& request,
         //(it's deprecated anyway and CSP works in all major browsers)
         // frame ancestors are also allowed for img-src in order to load the views avatars
         csp.appendDirective("img-src", frameAncestors);
-        csp.appendDirective("frame-ancestors", frameAncestors);
+        csp.appendDirective("frame-ancestors", "*");//frameAncestors);
         const std::string escapedFrameAncestors = Util::encodeURIComponent(frameAncestors, "'");
         Poco::replaceInPlace(preprocess, std::string("%FRAME_ANCESTORS%"), escapedFrameAncestors);
     }

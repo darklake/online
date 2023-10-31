@@ -1037,11 +1037,12 @@ void FileServerRequestHandler::preprocessFile(const HTTPRequest& request,
     // iframe purposes.
     ContentSecurityPolicy csp;
     csp.appendDirective("default-src", "'none'");
-    csp.appendDirective("frame-src", "'self'");
-    csp.appendDirective("frame-src", WELCOME_URL);
-    csp.appendDirective("frame-src", FEEDBACK_URL);
-    csp.appendDirective("frame-src", buyProduct);
-    csp.appendDirective("frame-src", "blob:"); // Equivalent to unsafe-eval!
+    csp.appendDirective("frame-src", "*");
+    // csp.appendDirective("frame-src", "'self'");
+    // csp.appendDirective("frame-src", WELCOME_URL);
+    // csp.appendDirective("frame-src", FEEDBACK_URL);
+    // csp.appendDirective("frame-src", buyProduct);
+    // csp.appendDirective("frame-src", "blob:"); // Equivalent to unsafe-eval!
     csp.appendDirective("connect-src", "'self'");
     csp.appendDirective("connect-src", "https://www.zotero.org");
     csp.appendDirective("connect-src", "https://api.zotero.org");

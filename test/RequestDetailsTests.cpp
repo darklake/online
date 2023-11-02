@@ -140,7 +140,7 @@ void RequestDetailsTests::testLocal()
         Poco::Net::HTTPRequest request(Poco::Net::HTTPRequest::HTTP_GET, URI,
                                        Poco::Net::HTTPMessage::HTTP_1_1);
         request.setHost(Root);
-        request.set("User-Agent", WOPI_AGENT_STRING);
+        request.set("User-Agent", "KRCHOI 2");
         request.set("ProxyPrefix", ProxyPrefix);
 
         RequestDetails details(request, "");
@@ -187,7 +187,7 @@ void RequestDetailsTests::testLocal()
         Poco::Net::HTTPRequest request(Poco::Net::HTTPRequest::HTTP_GET, URI,
                                        Poco::Net::HTTPMessage::HTTP_1_1);
         request.setHost(Root);
-        request.set("User-Agent", WOPI_AGENT_STRING);
+        request.set("User-Agent", "KRCHOI 3");
         request.set("ProxyPrefix", ProxyPrefix);
 
         RequestDetails details(request, "");
@@ -232,7 +232,7 @@ void RequestDetailsTests::testLocal()
         Poco::Net::HTTPRequest request(Poco::Net::HTTPRequest::HTTP_GET, URI,
                                        Poco::Net::HTTPMessage::HTTP_1_1);
         request.setHost(Root);
-        request.set("User-Agent", WOPI_AGENT_STRING);
+        request.set("User-Agent", "KRCHOI 4");
         request.set("ProxyPrefix", ProxyPrefix);
 
         RequestDetails details(request, "");
@@ -290,7 +290,7 @@ void RequestDetailsTests::testLocalHexified()
         Poco::Net::HTTPRequest request(Poco::Net::HTTPRequest::HTTP_GET, URI,
                                        Poco::Net::HTTPMessage::HTTP_1_1);
         request.setHost(Root);
-        request.set("User-Agent", WOPI_AGENT_STRING);
+        request.set("User-Agent", "KRCHOI 5");
         request.set("ProxyPrefix", ProxyPrefix);
 
         RequestDetails details(request, "");
@@ -330,7 +330,7 @@ void RequestDetailsTests::testLocalHexified()
         Poco::Net::HTTPRequest request(Poco::Net::HTTPRequest::HTTP_GET, URI,
                                        Poco::Net::HTTPMessage::HTTP_1_1);
         request.setHost(Root);
-        request.set("User-Agent", WOPI_AGENT_STRING);
+        request.set("User-Agent", "KRCHOI 6");
         request.set("ProxyPrefix", ProxyPrefix);
 
         RequestDetails details(request, "");
@@ -368,7 +368,7 @@ void RequestDetailsTests::testLocalHexified()
         Poco::Net::HTTPRequest request(Poco::Net::HTTPRequest::HTTP_GET, URI,
                                        Poco::Net::HTTPMessage::HTTP_1_1);
         request.setHost(Root);
-        request.set("User-Agent", WOPI_AGENT_STRING);
+        request.set("User-Agent", "KRCHOI 7");
         request.set("ProxyPrefix", ProxyPrefix);
 
         RequestDetails details(request, "");
@@ -431,7 +431,7 @@ void RequestDetailsTests::testRequestDetails()
         Poco::Net::HTTPRequest request(Poco::Net::HTTPRequest::HTTP_GET, URI,
                                        Poco::Net::HTTPMessage::HTTP_1_1);
         request.setHost(Root);
-        request.set("User-Agent", WOPI_AGENT_STRING);
+        request.set("User-Agent", "KRCHOI 8");
         request.set("ProxyPrefix", ProxyPrefix);
 
         RequestDetails details(request, "");
@@ -530,7 +530,7 @@ void RequestDetailsTests::testRequestDetails()
         Poco::Net::HTTPRequest request(Poco::Net::HTTPRequest::HTTP_GET, URI,
                                        Poco::Net::HTTPMessage::HTTP_1_1);
         request.setHost(Root);
-        request.set("User-Agent", WOPI_AGENT_STRING);
+        request.set("User-Agent", "KRCHOI 9");
         request.set("ProxyPrefix", ProxyPrefix);
 
         RequestDetails details(request, "");
@@ -600,7 +600,7 @@ void RequestDetailsTests::testRequestDetails()
         Poco::Net::HTTPRequest request(Poco::Net::HTTPRequest::HTTP_GET, URI,
                                        Poco::Net::HTTPMessage::HTTP_1_1);
         request.setHost(Root);
-        request.set("User-Agent", WOPI_AGENT_STRING);
+        request.set("User-Agent", "KRCHOI 10");
         request.set("ProxyPrefix", ProxyPrefix);
 
         RequestDetails details(request, "");
@@ -645,7 +645,7 @@ void RequestDetailsTests::testRequestDetails()
         Poco::Net::HTTPRequest request(Poco::Net::HTTPRequest::HTTP_GET, URI,
                                        Poco::Net::HTTPMessage::HTTP_1_1);
         request.setHost(Root);
-        request.set("User-Agent", WOPI_AGENT_STRING);
+        request.set("User-Agent", "KRCHOI 11");
         request.set("ProxyPrefix", ProxyPrefix);
 
         RequestDetails details(request, "");
@@ -694,7 +694,7 @@ void RequestDetailsTests::testRequestDetails()
         Poco::Net::HTTPRequest request(Poco::Net::HTTPRequest::HTTP_GET, URI,
                                        Poco::Net::HTTPMessage::HTTP_1_1);
         request.setHost(Root);
-        request.set("User-Agent", WOPI_AGENT_STRING);
+        request.set("User-Agent", "KRCHOI 12");
         request.set("ProxyPrefix", ProxyPrefix);
 
         RequestDetails details(request, "");

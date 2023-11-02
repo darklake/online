@@ -73,7 +73,7 @@ constexpr const char UPLOADING_SUFFIX[] = "ing";
 #define SHARED_DOC_THREADNAME_SUFFIX "broker_"
 
 /// The HTTP request User-Agent. Used only in Requests.
-#define HTTP_AGENT_STRING "COOLWSD HTTP Agent KRCHOI " COOLWSD_VERSION
+#define HTTP_AGENT_STRING "COOLWSD HTTP Agent " COOLWSD_VERSION
 
 /// The WOPI User-Agent. Depricated: use HTTP_AGENT_STRING.
 #define WOPI_AGENT_STRING HTTP_AGENT_STRING

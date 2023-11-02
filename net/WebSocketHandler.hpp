@@ -152,7 +152,9 @@ public:
 
         req.set("Host", hostAndPort); // Make sure the host is set.
         req.set("Date", Util::getHttpTimeNow());
-        req.set("User-Agent", HTTP_AGENT_STRING);
+        // KRCHOI
+        // req.set("User-Agent", HTTP_AGENT_STRING);
+        req.set("User-Agent", "HTTP_AGENT_STRING");
 
         req.set("Connection", "Upgrade");
         req.set("Upgrade", "websocket");

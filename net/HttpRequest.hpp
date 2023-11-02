@@ -1348,7 +1348,9 @@ private:
         }
         _request.set("Host", host); // Make sure the host is set.
         _request.set("Date", Util::getHttpTimeNow());
-        _request.set("User-Agent", HTTP_AGENT_STRING);
+        // KRCHOI
+        // _request.set("User-Agent", HTTP_AGENT_STRING);
+        _request.set("User-Agent", "HTTP_AGENT_STRING");
     }
 
     void onConnect(const std::shared_ptr<StreamSocket>& socket) override

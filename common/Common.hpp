@@ -76,8 +76,8 @@ constexpr const char UPLOADING_SUFFIX[] = "ing";
 #define HTTP_AGENT_STRING "COOLWSD HTTP Agent " COOLWSD_VERSION
 
 /// The WOPI User-Agent. Depricated: use HTTP_AGENT_STRING.
-#define STRINGIFY(x) #x
-#define TOSTRING(x) STRINGIFY(x)
+#define STRINGIFY_MY(x) #x
+#define TOSTRING(x) STRINGIFY_MY(x)
 
 // 파일명과 라인 넘버를 결합하는 매크로
 #define FILE_LINE (__FILE__ "_" TOSTRING(__LINE__))

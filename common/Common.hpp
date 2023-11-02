@@ -73,7 +73,7 @@ constexpr const char UPLOADING_SUFFIX[] = "ing";
 #define SHARED_DOC_THREADNAME_SUFFIX "broker_"
 
 /// The HTTP request User-Agent. Used only in Requests.
-#define HTTP_AGENT_STRING ("COOLWSD HTTP Agent " COOLWSD_VERSION)
+#define HTTP_AGENT_STRING "COOLWSD HTTP Agent " COOLWSD_VERSION
 
 /// The WOPI User-Agent. Depricated: use HTTP_AGENT_STRING.
 #define STRINGIFY_MY(x) #x
@@ -83,7 +83,7 @@ constexpr const char UPLOADING_SUFFIX[] = "ing";
 #define FILE_LINE (__FILE__ "_" TOSTRING(__LINE__))
 
 // 사용자 정의 에이전트 문자열 매크로
-#define WOPI_AGENT_STRING HTTP_AGENT_STRING "_" FILE_LINE
+#define WOPI_AGENT_STRING FILE_LINE
 
 //#define WOPI_AGENT_STRING HTTP_AGENT_STRING
 

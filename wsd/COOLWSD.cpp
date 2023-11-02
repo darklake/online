@@ -1787,7 +1787,7 @@ private:
         std::shared_ptr<http::Session> httpSession(StorageBase::getHttpSession(fontUri));
         http::Request request(fontUri.getPathAndQuery());
 
-        request.set("User-Agent", "KRCHOI 16");
+        request.set("User-Agent", WOPI_AGENT_STRING);
 
         const std::shared_ptr<const http::Response> httpResponse
             = httpSession->syncRequest(request);
@@ -1806,7 +1806,7 @@ private:
             request.set("If-None-Match", oldETag);
         }
 
-        request.set("User-Agent", "KRCHOI 17");
+        request.set("User-Agent", WOPI_AGENT_STRING);
 
         const std::shared_ptr<const http::Response> httpResponse
             = httpSession->syncRequest(request);
@@ -1831,7 +1831,7 @@ private:
             request.set("If-None-Match", oldETag);
         }
 
-        request.set("User-Agent", "KRCHOI 18");
+        request.set("User-Agent", WOPI_AGENT_STRING);
 
         const std::shared_ptr<const http::Response> httpResponse
             = httpSession->syncRequest(request);

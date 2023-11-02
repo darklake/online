@@ -1120,7 +1120,9 @@ void FileServerRequestHandler::preprocessFile(const HTTPRequest& request,
     oss << "HTTP/1.1 200 OK\r\n"
         "Date: " << Util::getHttpTimeNow() << "\r\n"
         "Last-Modified: " << Util::getHttpTimeNow() << "\r\n"
-        "User-Agent: " << "KRCHOI 20" << "\r\n"
+        "User-Agent: " << WOPI_AGENT_STRING << "\r\n"
+        // KRCHOI add access control allow origin
+        "Access-Control-Allow-Origin: *" "\r\n"
         "Cache-Control:max-age=11059200\r\n"
         "ETag: \"" COOLWSD_VERSION_HASH "\"\r\n"
         "Content-Length: " << preprocess.size() << "\r\n"

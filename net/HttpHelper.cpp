@@ -29,7 +29,7 @@ void sendError(int errorCode, const std::shared_ptr<StreamSocket>& socket, const
     std::ostringstream oss;
     oss << "HTTP/1.1 " << errorCode << "\r\n"
         << "Date: " << Util::getHttpTimeNow() << "\r\n"
-        << "User-Agent: " << "KRCHOI 1" << "\r\n"
+        << "User-Agent: " << WOPI_AGENT_STRING << "\r\n"
         << "Content-Length: " << body.size() << "\r\n"
         << extraHeader << "\r\n"
         << body;

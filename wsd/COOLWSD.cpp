@@ -2018,7 +2018,8 @@ void COOLWSD::innerInitialize(Application& self)
         { "per_view.idle_timeout_secs", "900" },
         { "per_view.out_of_focus_timeout_secs", "120" },
         { "security.capabilities", "true" },
-        { "security.seccomp", "true" },
+        // KRCHOI security.seccomp true to false
+        { "security.seccomp", "false" },
         { "security.jwt_expiry_secs", "1800" },
         { "security.enable_metrics_unauthenticated", "false" },
         { "certificates.database_path", "" },

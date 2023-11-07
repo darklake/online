@@ -3032,8 +3032,6 @@ void lokit_main(
             }
         }
 
-        // KRCHOI Lockdown remove
-        /*
         // Lock down the syscalls that can be used
         if (!Seccomp::lockdown(Seccomp::Type::KIT))
         {
@@ -3046,9 +3044,6 @@ void lokit_main(
             LOG_ERR("LibreOfficeKit seccomp security lockdown failed, but configured to continue. "
                     "You are running in a significantly less secure mode.");
         }
-        */
-
-       LOG_INF("noSeccomp is " << noSeccomp);
 
         rlimit rlim = { 0, 0 };
         if (getrlimit(RLIMIT_AS, &rlim) == 0)

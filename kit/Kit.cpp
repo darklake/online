@@ -3048,6 +3048,8 @@ void lokit_main(
         }
         */
 
+       LOG_INF("noSeccomp is " << noSeccomp);
+
         rlimit rlim = { 0, 0 };
         if (getrlimit(RLIMIT_AS, &rlim) == 0)
             LOG_INF("RLIMIT_AS is " << Util::getHumanizedBytes(rlim.rlim_max) << " (" << rlim.rlim_max << " bytes)");

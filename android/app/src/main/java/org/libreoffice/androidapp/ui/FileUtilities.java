@@ -110,6 +110,7 @@ public class FileUtilities {
         mExtnMap.put(".svm",  DRAWING);
         mExtnMap.put(".wmf",  DRAWING);
         mExtnMap.put(".svg",  DRAWING);
+        mExtnMap.put(".hwp",  DOC);
 
         // Some basic MIME types
         // Android's MimeTypeMap lacks some types that we need

@@ -995,6 +995,7 @@ public:
 
     static void GlobalCallback(const int type, const char* p, void* data)
     {
+        LOG_FTL("type : " << type + ", p : " << p + ", data : " << data);
         if (SigUtil::getTerminationFlag())
             return;
 
@@ -1004,7 +1005,9 @@ public:
             return;
 
         const std::string payload = p ? p : "(nil)";
+        LOG_FTL("payload : " << payload);
         Document* self = static_cast<Document*>(data);
+        LOG_FTL("self : " << self);
 
         if (type == LOK_CALLBACK_PROFILE_FRAME)
         {
@@ -1575,7 +1578,8 @@ private:
         if (!_loKitDocument)
         {
             // This is the first time we are loading the document
-            LOG_INF("Loading new document from URI: [" << uriAnonym << "] for session [" << sessionId << "].");
+            // KRCHOI was LOG_INF
+            LOG_FTL("Loading new document from URI: [" << uriAnonym << "] for session [" << sessionId << "].");
 
             _loKit->registerCallback(GlobalCallback, this);
 
@@ -1596,13 +1600,17 @@ private:
             const char *pURL = uri.c_str();
             LOG_DBG("Calling lokit::documentLoad(" << FileUtil::anonymizeUrl(pURL) << ", \"" << options << "\").");
             const auto start = std::chrono::steady_clock::now();
-            _loKitDocument.reset(_loKit->documentLoad(pURL, options.c_str()));
+            Document* doc = _loKit->documentLoad(pURL, options.c_str());
+            LOG_FTL("pURL : " << pURL << ", doc : " << doc);
+
+            _loKitDocument.reset(doc);
 #ifdef __ANDROID__
             _loKitDocumentForAndroidOnly = _loKitDocument;
 #endif
             const auto duration = std::chrono::steady_clock::now() - start;
             const auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(duration);
-            LOG_DBG("Returned lokit::documentLoad(" << FileUtil::anonymizeUrl(pURL) << ") in "
+            // KRCHOI was LOG_DBG
+            LOG_FTL("Returned lokit::documentLoad(" << FileUtil::anonymizeUrl(pURL) << ") in "
                                                     << elapsed);
 #ifdef IOS
             DocumentData::get(_mobileAppDocId).loKitDocument = _loKitDocument.get();

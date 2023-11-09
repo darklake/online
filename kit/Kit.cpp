@@ -1570,6 +1570,7 @@ private:
         if (!userTimezone.empty())
             options += ",Timezone=" + userTimezone;
 
+        LOG_FTL("_loKitDocument first : " << _loKitDocument);
         std::string spellOnline;
         if (!_loKitDocument)
         {

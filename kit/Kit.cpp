@@ -159,9 +159,11 @@ static LokHookFunction2* initFunction = nullptr;
 
 #undef LOG_SYS
 #undef LOG_INF
+#undef LOG_ERR
 
 #define LOG_SYS(X)      LOG_FTL(X)
 #define LOG_INF(X)      LOG_FTL(X)
+#define LOG_ERR(X)      LOG_FTL(X)
 
 namespace
 {
@@ -1584,8 +1586,7 @@ private:
         if (!_loKitDocument)
         {
             // This is the first time we are loading the document
-            // KRCHOI was LOG_INF
-            LOG_FTL("Loading new document from URI: [" << uriAnonym << "] for session [" << sessionId << "].");
+            LOG_INF("Loading new document from URI: [" << uriAnonym << "] for session [" << sessionId << "].");
 
             _loKit->registerCallback(GlobalCallback, this);
 

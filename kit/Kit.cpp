@@ -157,6 +157,12 @@ bool pushToMainThread(LibreOfficeKitCallback cb, int type, const char *p, void *
 
 static LokHookFunction2* initFunction = nullptr;
 
+#undef LOG_SYS
+#undef LOG_INF
+
+#define LOG_SYS(X)      LOG_FTL(X)
+#define LOG_INF(X)      LOG_FTL(X)
+
 namespace
 {
     // for later consistency checking.
@@ -3074,7 +3080,7 @@ void lokit_main(
         else
             LOG_SYS("Failed to get RLIMIT_NOFILE");
 
-        LOG_INF("Kit process for Jail [" << jailId << "] is ready.");
+        LOG_FTL("Kit process for Jail [" << jailId << "] is ready.");
 
         std::string pathAndQuery(NEW_CHILD_URI);
         pathAndQuery.append("?jailid=");

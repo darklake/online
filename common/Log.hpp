@@ -336,17 +336,6 @@ static constexpr std::size_t skipPathPrefix(const char (&s)[N], std::size_t n = 
         }                                                                                          \
     } while (false)
 
-// #define LOG_INF(X)                                                                                 \
-//     do                                                                                             \
-//     {                                                                                              \
-//         auto& log_ = Log::logger();                                                                \
-//         if (LOG_CONDITIONAL(log_, information))                                                    \
-//         {                                                                                          \
-//             LOG_BODY_(log_, INFORMATION, "INF", X, logPrefix, LOG_END);                            \
-//         }                                                                                          \
-//     } while (false)
-
-
 #define LOG_INF_NOFILE(X)                                                                          \
     do                                                                                             \
     {                                                                                              \
@@ -380,15 +369,8 @@ static constexpr std::size_t skipPathPrefix(const char (&s)[N], std::size_t n = 
     } while (false)
 
 #define LOG_INF(X)  LOG_FTL(X)
-//     do                                                                                             \
-// #define LOG_ERR(X)                                                                                 \
-//     {                                                                                              \
-//         auto& log_ = Log::logger();                                                                \
-//         if (LOG_CONDITIONAL(log_, error))                                                          \
-//         {                                                                                          \
-//             LOG_BODY_(log_, ERROR, "ERR", X, logPrefix, LOG_END);                                  \
-//         }                                                                                          \
-//     } while (false)
+
+
 #define LOG_ERR(X)  LOG_FTL(X)
 
 /// Log an ERR entry with the given errno appended.

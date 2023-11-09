@@ -1598,18 +1598,14 @@ private:
             _isDocPasswordProtected = false;
 
             const char *pURL = uri.c_str();
-            LOG_DBG("Calling lokit::documentLoad(" << FileUtil::anonymizeUrl(pURL) << ", \"" << options << "\").");
+            LOG_FTL("Calling lokit::documentLoad(" << FileUtil::anonymizeUrl(pURL) << ", \"" << options << "\").");
             const auto start = std::chrono::steady_clock::now();
-            Document* doc = _loKit->documentLoad(pURL, options.c_str());
-            LOG_FTL("pURL : " << pURL << ", doc : " << doc);
-
-            _loKitDocument.reset(doc);
+            _loKitDocument.reset(_loKit->documentLoad(pURL, options.c_str()));
 #ifdef __ANDROID__
             _loKitDocumentForAndroidOnly = _loKitDocument;
 #endif
             const auto duration = std::chrono::steady_clock::now() - start;
             const auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(duration);
-            // KRCHOI was LOG_DBG
             LOG_FTL("Returned lokit::documentLoad(" << FileUtil::anonymizeUrl(pURL) << ") in "
                                                     << elapsed);
 #ifdef IOS
@@ -1617,7 +1613,7 @@ private:
 #endif
             if (!_loKitDocument || !_loKitDocument->get())
             {
-                LOG_ERR("Failed to load: " << uriAnonym << ", error: " << _loKit->getError());
+                LOG_FTL("Failed to load: " << uriAnonym << ", error: " << _loKit->getError());
 
                 // Checking if wrong password or no password was reason for failure.
                 if (_isDocPasswordProtected)

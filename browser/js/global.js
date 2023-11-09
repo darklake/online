@@ -48,6 +48,8 @@ window.app = {
 					window.app.console[method] = function logWithCool() {
 						var args = Array.prototype.slice.call(arguments);
 
+						console.log(`arguments : ${arguments}`);
+
 						return window.console[method].apply(console, args);
 					};
 				}(loggingMethods[i]));

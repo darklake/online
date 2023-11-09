@@ -995,7 +995,7 @@ public:
 
     static void GlobalCallback(const int type, const char* p, void* data)
     {
-        LOG_FTL("type : " << type + ", p : " << p + ", data : " << data);
+        LOG_FTL("type : " << type + ", p : " << p << ", data : " << data);
         if (SigUtil::getTerminationFlag())
             return;
 

@@ -330,20 +330,30 @@ static constexpr std::size_t skipPathPrefix(const char (&s)[N], std::size_t n = 
     do                                                                                             \
     {                                                                                              \
         auto& log_ = Log::logger();                                                                \
-        if (LOG_CONDITIONAL(log_, debug))                                                          \
+        if (LOG_CONDITIONAL(log_, fatal))                                                          \
         {                                                                                          \
-            LOG_BODY_(log_, DEBUG, "DBG", X, logPrefix, LOG_END);                                  \
-        }                                                                                          \
+            LOG_BODY_(log_, FATAL, "FTL", X, logPrefix, LOG_END);                                  \
+        }
+        // KRCHOI 로그 출력
+        // if (LOG_CONDITIONAL(log_, debug))                                                          \
+        // {                                                                                          \
+        //     LOG_BODY_(log_, DEBUG, "DBG", X, logPrefix, LOG_END);                                  \
+        // }                                                                                          \
     } while (false)
 
 #define LOG_INF(X)                                                                                 \
     do                                                                                             \
     {                                                                                              \
         auto& log_ = Log::logger();                                                                \
-        if (LOG_CONDITIONAL(log_, information))                                                    \
+        if (LOG_CONDITIONAL(log_, fatal))                                                          \
         {                                                                                          \
-            LOG_BODY_(log_, INFORMATION, "INF", X, logPrefix, LOG_END);                            \
-        }                                                                                          \
+            LOG_BODY_(log_, FATAL, "FTL", X, logPrefix, LOG_END);                                  \
+        }
+        // KRCHOI 로그 출력
+        // if (LOG_CONDITIONAL(log_, information))                                                    \
+        // {                                                                                          \
+        //     LOG_BODY_(log_, INFORMATION, "INF", X, logPrefix, LOG_END);                            \
+        // }                                                                                          \
     } while (false)
 
 #define LOG_INF_NOFILE(X)                                                                          \

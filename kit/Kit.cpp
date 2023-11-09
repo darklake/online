@@ -1608,7 +1608,7 @@ private:
 #endif
             if (!_loKitDocument || !_loKitDocument->get())
             {
-                LOG_EfRR("Failed to load: " << uriAnonym << ", error: " << _loKit->getError());
+                LOG_ERR("Failed to load: " << uriAnonym << ", error: " << _loKit->getError());
 
                 // Checking if wrong password or no password was reason for failure.
                 if (_isDocPasswordProtected)

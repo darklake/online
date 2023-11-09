@@ -1606,7 +1606,6 @@ private:
 #ifdef IOS
             DocumentData::get(_mobileAppDocId).loKitDocument = _loKitDocument.get();
 #endif
-            LOG_ERR("_loKitDocument : " << _loKitDocument << ", getter : " << _loKitDocument->get());
             if (!_loKitDocument || !_loKitDocument->get())
             {
                 LOG_ERR("Failed to load: " << uriAnonym << ", error: " << _loKit->getError());

@@ -273,8 +273,8 @@ app.definitions.Socket = L.Class.extend({
 		if (!window.protocolDebug && !fullDebug)
 			return;
 
-		// if (!fullDebug && msg.length > 256) // for reasonable performance.
-		// 	msg = msg.substring(0,256) + '<truncated ' + (msg.length - 256) + 'chars>';
+		if (!fullDebug && msg.length > 256) // for reasonable performance.
+			msg = msg.substring(0,256) + '<truncated ' + (msg.length - 256) + 'chars>';
 
 		var status = '';
 		if (!window.fullyLoadedAndReady)

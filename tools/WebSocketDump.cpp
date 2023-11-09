@@ -99,15 +99,16 @@ private:
         {
             request.read(message);
 
-            LOG_INF('#' << socket->getFD() << ": Client HTTP Request: " << request.getMethod()
-                        << ' ' << request.getURI() << ' ' << request.getVersion() <<
-                    [&](auto& log)
-                    {
-                        for (const auto& it : request)
-                        {
-                            log << " / " << it.first << ": " << it.second;
-                        }
-                    });
+            // KRCHOI remove temp
+            // LOG_INF('#' << socket->getFD() << ": Client HTTP Request: " << request.getMethod()
+            //             << ' ' << request.getURI() << ' ' << request.getVersion() <<
+            //         [&](auto& log)
+            //         {
+            //             for (const auto& it : request)
+            //             {
+            //                 log << " / " << it.first << ": " << it.second;
+            //             }
+            //         });
 
             const std::streamsize contentLength = request.getContentLength();
             const auto offset = itBody - in.begin();

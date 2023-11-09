@@ -336,8 +336,11 @@ void ClientSession::onTileProcessed(const std::string_view tileID)
 
     if(iter != _tilesOnFly.end())
         _tilesOnFly.erase(iter);
-    else
-        LOG_INF("Tileprocessed message with an unknown tile ID '" << tileID << "' from session " << getId());
+    else {
+        // KRCHOI remove temp
+        // LOG_INF("Tileprocessed message with an unknown tile ID '" << tileID << "' from session " << getId());
+    }
+        
 }
 
 bool ClientSession::_handleInput(const char *buffer, int length)

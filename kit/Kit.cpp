@@ -157,14 +157,6 @@ bool pushToMainThread(LibreOfficeKitCallback cb, int type, const char *p, void *
 
 static LokHookFunction2* initFunction = nullptr;
 
-#undef LOG_SYS
-#undef LOG_INF
-#undef LOG_ERR
-
-#define LOG_SYS(X)      LOG_FTL(X)
-#define LOG_INF(X)      LOG_FTL(X)
-#define LOG_ERR(X)      LOG_FTL(X)
-
 namespace
 {
     // for later consistency checking.
@@ -1003,7 +995,6 @@ public:
 
     static void GlobalCallback(const int type, const char* p, void* data)
     {
-        LOG_FTL("type : " << type + ", p : " << p << ", data : " << data);
         if (SigUtil::getTerminationFlag())
             return;
 
@@ -1013,9 +1004,7 @@ public:
             return;
 
         const std::string payload = p ? p : "(nil)";
-        LOG_FTL("payload : " << payload);
         Document* self = static_cast<Document*>(data);
-        LOG_FTL("self : " << self);
 
         if (type == LOK_CALLBACK_PROFILE_FRAME)
         {
@@ -1581,7 +1570,6 @@ private:
         if (!userTimezone.empty())
             options += ",Timezone=" + userTimezone;
 
-        LOG_FTL("_loKitDocument first : " << _loKitDocument);
         std::string spellOnline;
         if (!_loKitDocument)
         {
@@ -1605,7 +1593,7 @@ private:
             _isDocPasswordProtected = false;
 
             const char *pURL = uri.c_str();
-            LOG_FTL("Calling lokit::documentLoad(" << FileUtil::anonymizeUrl(pURL) << ", \"" << options << "\").");
+            LOG_DBG("Calling lokit::documentLoad(" << FileUtil::anonymizeUrl(pURL) << ", \"" << options << "\").");
             const auto start = std::chrono::steady_clock::now();
             _loKitDocument.reset(_loKit->documentLoad(pURL, options.c_str()));
 #ifdef __ANDROID__
@@ -1613,14 +1601,14 @@ private:
 #endif
             const auto duration = std::chrono::steady_clock::now() - start;
             const auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(duration);
-            LOG_FTL("Returned lokit::documentLoad(" << FileUtil::anonymizeUrl(pURL) << ") in "
+            LOG_DBG("Returned lokit::documentLoad(" << FileUtil::anonymizeUrl(pURL) << ") in "
                                                     << elapsed);
 #ifdef IOS
             DocumentData::get(_mobileAppDocId).loKitDocument = _loKitDocument.get();
 #endif
             if (!_loKitDocument || !_loKitDocument->get())
             {
-                LOG_FTL("Failed to load: " << uriAnonym << ", error: " << _loKit->getError());
+                LOG_ERR("Failed to load: " << uriAnonym << ", error: " << _loKit->getError());
 
                 // Checking if wrong password or no password was reason for failure.
                 if (_isDocPasswordProtected)
@@ -3081,7 +3069,7 @@ void lokit_main(
         else
             LOG_SYS("Failed to get RLIMIT_NOFILE");
 
-        LOG_FTL("Kit process for Jail [" << jailId << "] is ready.");
+        LOG_INF("Kit process for Jail [" << jailId << "] is ready.");
 
         std::string pathAndQuery(NEW_CHILD_URI);
         pathAndQuery.append("?jailid=");

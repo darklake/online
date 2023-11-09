@@ -1606,8 +1606,7 @@ private:
 #ifdef IOS
             DocumentData::get(_mobileAppDocId).loKitDocument = _loKitDocument.get();
 #endif
-            TypeGetter<N, Type>::ConstHeadType& getter = _loKitDocument->get();
-            LOG_ERR("_loKitDocument : " << _loKitDocument << ", getter : " << getter);
+            LOG_ERR("_loKitDocument : " << _loKitDocument << ", getter : " << _loKitDocument->get());
             if (!_loKitDocument || !getter)
             {
                 LOG_ERR("Failed to load: " << uriAnonym << ", error: " << _loKit->getError());

@@ -336,16 +336,6 @@ static constexpr std::size_t skipPathPrefix(const char (&s)[N], std::size_t n = 
         }                                                                                          \
     } while (false)
 
-#define LOG_INF(X)                                                                                 \
-    do                                                                                             \
-    {                                                                                              \
-        auto& log_ = Log::logger();                                                                \
-        if (LOG_CONDITIONAL(log_, information))                                                    \
-        {                                                                                          \
-            LOG_BODY_(log_, INFORMATION, "INF", X, logPrefix, LOG_END);                            \
-        }                                                                                          \
-    } while (false)
-
 #define LOG_INF_NOFILE(X)                                                                          \
     do                                                                                             \
     {                                                                                              \
@@ -366,15 +356,22 @@ static constexpr std::size_t skipPathPrefix(const char (&s)[N], std::size_t n = 
         }                                                                                          \
     } while (false)
 
-#define LOG_ERR(X)                                                                                 \
+
+#define LOG_FTL(X)                                                                                 \
     do                                                                                             \
     {                                                                                              \
+        std::cerr << X << std::endl;                                                               \
         auto& log_ = Log::logger();                                                                \
-        if (LOG_CONDITIONAL(log_, error))                                                          \
+        if (LOG_CONDITIONAL(log_, fatal))                                                          \
         {                                                                                          \
-            LOG_BODY_(log_, ERROR, "ERR", X, logPrefix, LOG_END);                                  \
+            LOG_BODY_(log_, FATAL, "FTL", X, logPrefix, LOG_END);                                  \
         }                                                                                          \
     } while (false)
+
+#define LOG_INF(X)  LOG_FTL(X)
+
+
+#define LOG_ERR(X)  LOG_FTL(X)
 
 /// Log an ERR entry with the given errno appended.
 #define LOG_SYS_ERRNO(ERRNO, X)                                                                    \
@@ -389,16 +386,6 @@ static constexpr std::size_t skipPathPrefix(const char (&s)[N], std::size_t n = 
 /// Use LOG_SYS_ERRNO to pass errno explicitly.
 #define LOG_SYS(X) LOG_SYS_ERRNO(errno, X)
 
-#define LOG_FTL(X)                                                                                 \
-    do                                                                                             \
-    {                                                                                              \
-        std::cerr << X << std::endl;                                                               \
-        auto& log_ = Log::logger();                                                                \
-        if (LOG_CONDITIONAL(log_, fatal))                                                          \
-        {                                                                                          \
-            LOG_BODY_(log_, FATAL, "FTL", X, logPrefix, LOG_END);                                  \
-        }                                                                                          \
-    } while (false)
 
 /// Log an FTL (fatal) entry with errno appended.
 /// NOTE: Must be called immediately after an API that sets errno.
